@@ -27,7 +27,13 @@ const AppHeader = ({ sidebarShow, setSidebarShow }) => {
   };
 
   return (
-    <CHeader position="sticky" className="mb-4">
+    <CHeader 
+      position="sticky" 
+      className="mb-4"
+      style={{
+        background: '#ffffff'
+      }}
+    >
       <CContainer fluid>
         <CHeaderToggler
           className="ps-1"

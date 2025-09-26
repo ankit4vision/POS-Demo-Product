@@ -46,44 +46,158 @@ const SalesVsPurchasesChart = ({ dateRange }) => {
   });
 
   return (
-    <CCard color="light" textColor="dark" style={{ background: '#fff', minHeight: 320, border: '1px solid #e9ecef', borderRadius: 12, boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
-      <CCardHeader className="bg-light border-bottom-0 fw-bold d-flex align-items-center justify-content-between" style={{ borderRadius: '12px 12px 0 0', padding: '12px 16px' }}>
-        <span><CIcon icon={cilChart} className="me-2 text-primary" />Sales vs Purchases</span>
-        <select value={groupBy} onChange={handleGroupByChange} style={{ border: '1px solid #e9ecef', borderRadius: 6, padding: '2px 10px', fontWeight: 500, color: '#321fdb', background: '#f5f6fa' }}>
+    <CCard 
+      className="h-100 border-0 shadow-sm"
+      style={{ 
+        background: 'linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%)',
+        borderRadius: 16,
+        overflow: 'hidden',
+        transition: 'all 0.3s ease'
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = 'translateY(-3px)';
+        e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = 'translateY(0)';
+        e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+      }}
+    >
+      <CCardHeader 
+        className="border-bottom-0 fw-bold text-white d-flex align-items-center justify-content-between" 
+        style={{ 
+          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          borderRadius: '16px 16px 0 0', 
+          padding: '16px 20px' 
+        }}
+      >
+        <span><CIcon icon={cilChart} className="me-2" />Sales vs Purchases</span>
+        <select 
+          value={groupBy} 
+          onChange={handleGroupByChange} 
+          style={{ 
+            border: 'none', 
+            borderRadius: 8, 
+            padding: '6px 12px', 
+            fontWeight: 500, 
+            color: '#667eea', 
+            background: 'rgba(255, 255, 255, 0.9)',
+            backdropFilter: 'blur(10px)',
+            outline: 'none',
+            cursor: 'pointer'
+          }}
+        >
           <option value="daily">Daily</option>
           <option value="monthly">Monthly</option>
           <option value="yearly">Yearly</option>
         </select>
       </CCardHeader>
-      <CCardBody>
+      <CCardBody style={{ padding: '20px' }}>
         {loading ? (
-          <div className="text-center py-5"><CSpinner /></div>
+          <div className="text-center py-5">
+            <CSpinner />
+            <div className="mt-3 text-muted">Loading chart data...</div>
+          </div>
         ) : (
-          <Line
-            data={{
-              labels,
-              datasets: [
-                {
-                  label: 'Sales (£)',
-                  data: salesDataArr,
-                  borderColor: '#321fdb',
-                  backgroundColor: 'rgba(50,31,219,0.1)',
-                  tension: 0.4,
+          <div style={{ position: 'relative', width: '100%', height: 280 }}>
+            <Line
+              data={{
+                labels,
+                datasets: [
+                  {
+                    label: 'Sales (£)',
+                    data: salesDataArr,
+                    borderColor: '#667eea',
+                    backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                    borderWidth: 3,
+                    pointBackgroundColor: '#667eea',
+                    pointBorderColor: '#ffffff',
+                    pointBorderWidth: 2,
+                    pointRadius: 6,
+                    pointHoverRadius: 8,
+                    tension: 0.4,
+                    fill: true,
+                  },
+                  {
+                    label: 'Purchases (£)',
+                    data: purchasesDataArr,
+                    borderColor: '#f093fb',
+                    backgroundColor: 'rgba(240, 147, 251, 0.1)',
+                    borderWidth: 3,
+                    pointBackgroundColor: '#f093fb',
+                    pointBorderColor: '#ffffff',
+                    pointBorderWidth: 2,
+                    pointRadius: 6,
+                    pointHoverRadius: 8,
+                    tension: 0.4,
+                    fill: true,
+                  },
+                ],
+              }}
+              options={{
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { 
+                  legend: { 
+                    position: 'top',
+                    labels: {
+                      usePointStyle: true,
+                      pointStyle: 'circle',
+                      padding: 20,
+                      font: {
+                        size: 12,
+                        weight: '500'
+                      }
+                    }
+                  },
+                  tooltip: {
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                    titleColor: 'white',
+                    bodyColor: 'white',
+                    borderColor: '#667eea',
+                    borderWidth: 1,
+                    cornerRadius: 8,
+                    displayColors: true,
+                    intersect: false,
+                    mode: 'index',
+                  }
                 },
-                {
-                  label: 'Purchases (£)',
-                  data: purchasesDataArr,
-                  borderColor: '#2eb85c',
-                  backgroundColor: 'rgba(46,184,92,0.1)',
-                  tension: 0.4,
+                scales: {
+                  x: {
+                    grid: {
+                      color: 'rgba(0, 0, 0, 0.05)',
+                      drawBorder: false,
+                    },
+                    ticks: {
+                      color: '#666',
+                      font: {
+                        size: 11
+                      }
+                    }
+                  },
+                  y: {
+                    grid: {
+                      color: 'rgba(0, 0, 0, 0.05)',
+                      drawBorder: false,
+                    },
+                    ticks: {
+                      color: '#666',
+                      font: {
+                        size: 11
+                      },
+                      callback: function(value) {
+                        return '£' + value.toLocaleString();
+                      }
+                    }
+                  }
                 },
-              ],
-            }}
-            options={{
-              responsive: true,
-              plugins: { legend: { position: 'top' } },
-            }}
-          />
+                interaction: {
+                  intersect: false,
+                  mode: 'index'
+                }
+              }}
+            />
+          </div>
         )}
       </CCardBody>
     </CCard>

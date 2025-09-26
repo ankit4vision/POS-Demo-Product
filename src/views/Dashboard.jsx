@@ -88,37 +88,124 @@ const Dashboard = () => {
       {/* Row 1: Key Metrics */}
       <CRow className="mb-3">
         <CCol md={4} sm={12} className="mb-3">
-          <CCard color="light" textColor="dark" style={{ background: '#fff', minHeight: 140, border: '1px solid #e9ecef', borderRadius: 12, boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
-            <CCardBody className="d-flex align-items-center">
-              <CIcon icon={cilCart} size="xl" className="me-3 text-primary" />
+          <CCard 
+            className="h-100 border-0 shadow-sm"
+            style={{ 
+              background: 'linear-gradient(135deg, #e8f2ff 0%, #f0e8ff 25%, #fef8ff 50%, #fff0f5 75%, #e8f8ff 100%)',
+              borderRadius: 16,
+              overflow: 'hidden',
+              transition: 'all 0.3s ease',
+              cursor: 'pointer'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-3px)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+            }}
+            onClick={() => navigate('/invoices')}
+          >
+            <CCardBody className="d-flex align-items-center text-dark p-4">
+              <div 
+                className="me-3 d-flex align-items-center justify-content-center"
+                style={{
+                  width: 60,
+                  height: 60,
+                  background: 'rgba(102, 126, 234, 0.1)',
+                  borderRadius: '50%',
+                  backdropFilter: 'blur(10px)'
+                }}
+              >
+                <CIcon icon={cilCart} size="xl" className="text-primary" />
+              </div>
               <div>
-                <div className="fs-6">Total Sales (+VAT)</div>
-                <div className="fs-4 fw-bold">£{summary.total_sales}</div>
-                <div className="small text-secondary">Sum of all sales invoices (including VAT).</div>
+                <div className="fs-6 text-muted mb-1">Total Sales (+VAT)</div>
+                <div className="fs-2 fw-bold text-primary">£{summary.total_sales}</div>
+                <div className="small text-muted">All sales invoices including VAT</div>
               </div>
             </CCardBody>
           </CCard>
         </CCol>
         <CCol md={4} sm={12} className="mb-3">
-          <CCard color="light" textColor="dark" style={{ background: '#fff', minHeight: 140, border: '1px solid #e9ecef', borderRadius: 12, boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
-            <CCardBody className="d-flex align-items-center">
-              <CIcon icon={cilTruck} size="xl" className="me-3 text-info" />
+          <CCard 
+            className="h-100 border-0 shadow-sm"
+            style={{ 
+              background: 'linear-gradient(135deg, #e8f2ff 0%, #f0e8ff 25%, #fef8ff 50%, #fff0f5 75%, #e8f8ff 100%)',
+              borderRadius: 16,
+              overflow: 'hidden',
+              transition: 'all 0.3s ease',
+              cursor: 'pointer'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-3px)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+            }}
+            onClick={() => navigate('/purchases')}
+          >
+            <CCardBody className="d-flex align-items-center text-dark p-4">
+              <div 
+                className="me-3 d-flex align-items-center justify-content-center"
+                style={{
+                  width: 60,
+                  height: 60,
+                  background: 'rgba(240, 147, 251, 0.1)',
+                  borderRadius: '50%',
+                  backdropFilter: 'blur(10px)'
+                }}
+              >
+                <CIcon icon={cilTruck} size="xl" className="text-danger" />
+              </div>
               <div>
-                <div className="fs-6">Total Purchases</div>
-                <div className="fs-4 fw-bold">£{summary.total_purchases}</div>
-                <div className="small text-secondary">Sum of all purchase orders (excluding drafts).</div>
+                <div className="fs-6 text-muted mb-1">Total Purchases</div>
+                <div className="fs-2 fw-bold text-danger">£{summary.total_purchases}</div>
+                <div className="small text-muted">Purchase orders (excluding drafts)</div>
               </div>
             </CCardBody>
           </CCard>
         </CCol>
         <CCol md={4} sm={12} className="mb-3">
-          <CCard color="light" textColor="dark" style={{ background: '#fff', minHeight: 140, border: '1px solid #e9ecef', borderRadius: 12, boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
-            <CCardBody className="d-flex align-items-center">
-              <CIcon icon={cilMoney} size="xl" className="me-3 text-danger" />
+          <CCard 
+            className="h-100 border-0 shadow-sm"
+            style={{ 
+              background: 'linear-gradient(135deg, #e8f2ff 0%, #f0e8ff 25%, #fef8ff 50%, #fff0f5 75%, #e8f8ff 100%)',
+              borderRadius: 16,
+              overflow: 'hidden',
+              transition: 'all 0.3s ease',
+              cursor: 'pointer'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-3px)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+            }}
+            onClick={() => navigate('/expenses')}
+          >
+            <CCardBody className="d-flex align-items-center text-dark p-4">
+              <div 
+                className="me-3 d-flex align-items-center justify-content-center"
+                style={{
+                  width: 60,
+                  height: 60,
+                  background: 'rgba(79, 172, 254, 0.1)',
+                  borderRadius: '50%',
+                  backdropFilter: 'blur(10px)'
+                }}
+              >
+                <CIcon icon={cilMoney} size="xl" className="text-info" />
+              </div>
               <div>
-                <div className="fs-6">Total Expenses</div>
-                <div className="fs-4 fw-bold">£{summary.total_expenses}</div>
-                <div className="small text-secondary">Sum of all company expenses.</div>
+                <div className="fs-6 text-muted mb-1">Total Expenses</div>
+                <div className="fs-2 fw-bold text-info">£{summary.total_expenses}</div>
+                <div className="small text-muted">All company expenses</div>
               </div>
             </CCardBody>
           </CCard>
@@ -127,33 +214,125 @@ const Dashboard = () => {
       {/* Row: Total Customers, Total Products, Low Stock Products */}
       <CRow className="mb-3">
         <CCol md={4} sm={12} className="mb-3">
-          <CCard color="light" textColor="dark" style={{ background: '#fff', minHeight: 140, border: '1px solid #e9ecef', borderRadius: 12, boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
-            <CCardBody className="d-flex align-items-center">
-              <CIcon icon={cilUser} size="xl" className="me-3 text-secondary" />
+          <CCard 
+            className="h-100 border-0 shadow-sm"
+            style={{ 
+              background: 'linear-gradient(135deg, #e8f2ff 0%, #f0e8ff 25%, #fef8ff 50%, #fff0f5 75%, #e8f8ff 100%)',
+              borderRadius: 16,
+              overflow: 'hidden',
+              transition: 'all 0.3s ease',
+              cursor: 'pointer'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-3px)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+            }}
+            onClick={() => navigate('/customers')}
+          >
+            <CCardBody className="d-flex align-items-center text-dark p-4">
+              <div 
+                className="me-3 d-flex align-items-center justify-content-center"
+                style={{
+                  width: 60,
+                  height: 60,
+                  background: 'rgba(102, 126, 234, 0.1)',
+                  borderRadius: '50%',
+                  backdropFilter: 'blur(10px)'
+                }}
+              >
+                <CIcon icon={cilUser} size="xl" className="text-secondary" />
+              </div>
               <div>
-                <div className="fs-6">Total Customers</div>
-                <div className="fs-4 fw-bold">{summary.total_customers}</div>
+                <div className="fs-6 text-muted mb-1">Total Customers</div>
+                <div className="fs-2 fw-bold text-secondary">{summary.total_customers}</div>
+                <div className="small text-muted">Active customer base</div>
               </div>
             </CCardBody>
           </CCard>
         </CCol>
         <CCol md={4} sm={12} className="mb-3">
-          <CCard color="light" textColor="dark" style={{ background: '#fff', minHeight: 140, border: '1px solid #e9ecef', borderRadius: 12, boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
-            <CCardBody className="d-flex align-items-center">
-              <CIcon icon={cilList} size="xl" className="me-3 text-warning" />
+          <CCard 
+            className="h-100 border-0 shadow-sm"
+            style={{ 
+              background: 'linear-gradient(135deg, #e8f2ff 0%, #f0e8ff 25%, #fef8ff 50%, #fff0f5 75%, #e8f8ff 100%)',
+              borderRadius: 16,
+              overflow: 'hidden',
+              transition: 'all 0.3s ease',
+              cursor: 'pointer'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-3px)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+            }}
+            onClick={() => navigate('/products')}
+          >
+            <CCardBody className="d-flex align-items-center text-dark p-4">
+              <div 
+                className="me-3 d-flex align-items-center justify-content-center"
+                style={{
+                  width: 60,
+                  height: 60,
+                  background: 'rgba(249, 177, 21, 0.1)',
+                  borderRadius: '50%',
+                  backdropFilter: 'blur(10px)'
+                }}
+              >
+                <CIcon icon={cilList} size="xl" className="text-warning" />
+              </div>
               <div>
-                <div className="fs-6">Total Products</div>
-                <div className="fs-4 fw-bold">{summary.total_products}</div>
+                <div className="fs-6 text-muted mb-1">Total Products</div>
+                <div className="fs-2 fw-bold text-warning">{summary.total_products}</div>
+                <div className="small text-muted">Items in inventory</div>
               </div>
             </CCardBody>
           </CCard>
         </CCol>
         <CCol md={4} sm={12} className="mb-3">
-          <CCard color="light" textColor="dark" style={{ background: '#fff', minHeight: 140, border: '1px solid #e9ecef', borderRadius: 12, boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
-            <CCardHeader className="bg-light border-bottom-0 fw-bold" style={{ borderRadius: '12px 12px 0 0', padding: '12px 16px' }}><CIcon icon={cilWarning} className="me-2 text-dark" />Low Stock Products</CCardHeader>
-            <CCardBody className="d-flex flex-column align-items-center justify-content-center">
-              <div className="fs-1 fw-bold">{summary.low_stock}</div>
-              <div className="text-muted">products at or below low stock</div>
+          <CCard 
+            className="h-100 border-0 shadow-sm"
+            style={{ 
+              background: 'linear-gradient(135deg, #e8f2ff 0%, #f0e8ff 25%, #fef8ff 50%, #fff0f5 75%, #e8f8ff 100%)',
+              borderRadius: 16,
+              overflow: 'hidden',
+              transition: 'all 0.3s ease',
+              cursor: 'pointer'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-3px)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+            }}
+            onClick={() => navigate('/products?filter=low-stock')}
+          >
+            <CCardBody className="d-flex align-items-center text-dark p-4">
+              <div 
+                className="me-3 d-flex align-items-center justify-content-center"
+                style={{
+                  width: 60,
+                  height: 60,
+                  background: 'rgba(79, 172, 254, 0.1)',
+                  borderRadius: '50%',
+                  backdropFilter: 'blur(10px)'
+                }}
+              >
+                <CIcon icon={cilWarning} size="xl" className="text-info" />
+              </div>
+              <div>
+                <div className="fs-6 text-muted mb-1">Low Stock Alert</div>
+                <div className="fs-2 fw-bold text-info">{summary.low_stock}</div>
+                <div className="small text-muted">Need restocking</div>
+              </div>
             </CCardBody>
           </CCard>
         </CCol>
@@ -161,67 +340,187 @@ const Dashboard = () => {
       {/* Row: Top Selling Products, Best Customers, Best Suppliers */}
       <CRow className="mb-3">
         <CCol md={4} sm={12} className="mb-3">
-          <CCard color="light" textColor="dark" style={{ background: '#fff', minHeight: 220, border: '1px solid #e9ecef', borderRadius: 12, boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
-            <CCardHeader className="bg-light border-bottom-0 fw-bold" style={{ borderRadius: '12px 12px 0 0', padding: '12px 16px' }}><CIcon icon={cilList} className="me-2 text-primary" />Top Selling Products</CCardHeader>
-            <CCardBody>
+          <CCard 
+            className="h-100 border-0 shadow-sm"
+            style={{ 
+              background: 'linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%)',
+              borderRadius: 16,
+              overflow: 'hidden',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-3px)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+            }}
+          >
+            <CCardHeader 
+              className="border-bottom-0 fw-bold text-white" 
+              style={{ 
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                borderRadius: '16px 16px 0 0', 
+                padding: '16px 20px' 
+              }}
+            >
+              <CIcon icon={cilList} className="me-2" />Top Selling Products
+            </CCardHeader>
+            <CCardBody style={{ padding: '20px' }}>
               {summary.top_selling_products && summary.top_selling_products.length > 0 ? (
                 <div>
                   {summary.top_selling_products.map((product, index) => (
-                    <div key={index} className="d-flex justify-content-between align-items-center mb-2 p-2 border-bottom">
+                    <div key={index} className="d-flex justify-content-between align-items-center mb-3 p-3 rounded-3" style={{ background: 'rgba(102, 126, 234, 0.05)' }}>
                       <div>
-                        <span className="fw-bold me-2">#{index + 1}</span>
-                        <span>{product.name}</span>
+                        <span className="fw-bold me-2 text-primary">#{index + 1}</span>
+                        <span className="fw-medium">{product.name}</span>
                       </div>
-                      <CBadge color="primary" variant="outline">{product.quantity} units</CBadge>
+                      <CBadge 
+                        style={{ 
+                          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                          border: 'none',
+                          color: 'white',
+                          padding: '6px 12px',
+                          borderRadius: '20px'
+                        }}
+                      >
+                        {product.quantity} units
+                      </CBadge>
                     </div>
                   ))}
                 </div>
               ) : (
-                <div style={{ minHeight: 80 }} className="d-flex align-items-center justify-content-center text-muted">No sales data available</div>
+                <div style={{ minHeight: 80 }} className="d-flex align-items-center justify-content-center text-muted">
+                  <div className="text-center">
+                    <CIcon icon={cilList} size="2xl" className="mb-2 opacity-50" />
+                    <div>No sales data available</div>
+                  </div>
+                </div>
               )}
             </CCardBody>
           </CCard>
         </CCol>
         <CCol md={4} sm={12} className="mb-3">
-          <CCard color="light" textColor="dark" style={{ background: '#fff', minHeight: 220, border: '1px solid #e9ecef', borderRadius: 12, boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
-            <CCardHeader className="bg-light border-bottom-0 fw-bold" style={{ borderRadius: '12px 12px 0 0', padding: '12px 16px' }}><CIcon icon={cilUser} className="me-2 text-success" />Best Customers</CCardHeader>
-            <CCardBody>
+          <CCard 
+            className="h-100 border-0 shadow-sm"
+            style={{ 
+              background: 'linear-gradient(135deg, #ffffff 0%, #fff8f9 100%)',
+              borderRadius: 16,
+              overflow: 'hidden',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-3px)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+            }}
+          >
+            <CCardHeader 
+              className="border-bottom-0 fw-bold text-white" 
+              style={{ 
+                background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                borderRadius: '16px 16px 0 0', 
+                padding: '16px 20px' 
+              }}
+            >
+              <CIcon icon={cilUser} className="me-2" />Best Customers
+            </CCardHeader>
+            <CCardBody style={{ padding: '20px' }}>
               {summary.best_customers && summary.best_customers.length > 0 ? (
                 <div>
                   {summary.best_customers.map((customer, index) => (
-                    <div key={index} className="d-flex justify-content-between align-items-center mb-2 p-2 border-bottom">
+                    <div key={index} className="d-flex justify-content-between align-items-center mb-3 p-3 rounded-3" style={{ background: 'rgba(240, 147, 251, 0.05)' }}>
                       <div>
-                        <span className="fw-bold me-2">#{index + 1}</span>
-                        <span>{customer.name}</span>
+                        <span className="fw-bold me-2 text-danger">#{index + 1}</span>
+                        <span className="fw-medium">{customer.name}</span>
                       </div>
-                      <CBadge color="success" variant="outline">£{customer.total}</CBadge>
+                      <CBadge 
+                        style={{ 
+                          background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                          border: 'none',
+                          color: 'white',
+                          padding: '6px 12px',
+                          borderRadius: '20px'
+                        }}
+                      >
+                        £{customer.total}
+                      </CBadge>
                     </div>
                   ))}
                 </div>
               ) : (
-                <div style={{ minHeight: 80 }} className="d-flex align-items-center justify-content-center text-muted">No customer data available</div>
+                <div style={{ minHeight: 80 }} className="d-flex align-items-center justify-content-center text-muted">
+                  <div className="text-center">
+                    <CIcon icon={cilUser} size="2xl" className="mb-2 opacity-50" />
+                    <div>No customer data available</div>
+                  </div>
+                </div>
               )}
             </CCardBody>
           </CCard>
         </CCol>
         <CCol md={4} sm={12} className="mb-3">
-          <CCard color="light" textColor="dark" style={{ background: '#fff', minHeight: 220, border: '1px solid #e9ecef', borderRadius: 12, boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
-            <CCardHeader className="bg-light border-bottom-0 fw-bold" style={{ borderRadius: '12px 12px 0 0', padding: '12px 16px' }}><CIcon icon={cilTruck} className="me-2 text-info" />Best Suppliers</CCardHeader>
-            <CCardBody>
+          <CCard 
+            className="h-100 border-0 shadow-sm"
+            style={{ 
+              background: 'linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%)',
+              borderRadius: 16,
+              overflow: 'hidden',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-3px)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+            }}
+          >
+            <CCardHeader 
+              className="border-bottom-0 fw-bold text-white" 
+              style={{ 
+                background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+                borderRadius: '16px 16px 0 0', 
+                padding: '16px 20px' 
+              }}
+            >
+              <CIcon icon={cilTruck} className="me-2" />Best Suppliers
+            </CCardHeader>
+            <CCardBody style={{ padding: '20px' }}>
               {summary.best_suppliers && summary.best_suppliers.length > 0 ? (
                 <div>
                   {summary.best_suppliers.map((supplier, index) => (
-                    <div key={index} className="d-flex justify-content-between align-items-center mb-2 p-2 border-bottom">
+                    <div key={index} className="d-flex justify-content-between align-items-center mb-3 p-3 rounded-3" style={{ background: 'rgba(79, 172, 254, 0.05)' }}>
                       <div>
-                        <span className="fw-bold me-2">#{index + 1}</span>
-                        <span>{supplier.name}</span>
+                        <span className="fw-bold me-2 text-info">#{index + 1}</span>
+                        <span className="fw-medium">{supplier.name}</span>
                       </div>
-                      <CBadge color="info" variant="outline">£{supplier.total}</CBadge>
+                      <CBadge 
+                        style={{ 
+                          background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+                          border: 'none',
+                          color: 'white',
+                          padding: '6px 12px',
+                          borderRadius: '20px'
+                        }}
+                      >
+                        £{supplier.total}
+                      </CBadge>
                     </div>
                   ))}
                 </div>
               ) : (
-                <div style={{ minHeight: 80 }} className="d-flex align-items-center justify-content-center text-muted">No supplier data available</div>
+                <div style={{ minHeight: 80 }} className="d-flex align-items-center justify-content-center text-muted">
+                  <div className="text-center">
+                    <CIcon icon={cilTruck} size="2xl" className="mb-2 opacity-50" />
+                    <div>No supplier data available</div>
+                  </div>
+                </div>
               )}
             </CCardBody>
           </CCard>
@@ -230,66 +529,206 @@ const Dashboard = () => {
       {/* Row 3: Pending Purchase Orders */}
       <CRow className="mb-3">
         <CCol md={4} sm={12} className="mb-3">
-          <CCard color="light" textColor="dark" style={{ background: '#fff', minHeight: 220, border: '1px solid #e9ecef', borderRadius: 12, boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
-            <CCardHeader className="bg-light border-bottom-0 fw-bold" style={{ borderRadius: '12px 12px 0 0', padding: '12px 16px' }}><CIcon icon={cilTruck} className="me-2 text-warning" />Pending Purchase Orders</CCardHeader>
-            <CCardBody>
+          <CCard 
+            className="h-100 border-0 shadow-sm"
+            style={{ 
+              background: 'linear-gradient(135deg, #ffffff 0%, #fffbf0 100%)',
+              borderRadius: 16,
+              overflow: 'hidden',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-3px)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+            }}
+          >
+            <CCardHeader 
+              className="border-bottom-0 fw-bold text-white" 
+              style={{ 
+                background: 'linear-gradient(135deg, #f9b115 0%, #ff8c00 100%)',
+                borderRadius: '16px 16px 0 0', 
+                padding: '16px 20px' 
+              }}
+            >
+              <CIcon icon={cilTruck} className="me-2" />Pending Purchase Orders
+            </CCardHeader>
+            <CCardBody style={{ padding: '20px' }}>
               {summary.pending_purchase_orders && summary.pending_purchase_orders.length > 0 ? (
                 <div>
                   {summary.pending_purchase_orders.map((po, index) => (
-                    <div key={po.id} className="d-flex justify-content-between align-items-center mb-2 p-2 border-bottom">
+                    <div key={po.id} className="d-flex justify-content-between align-items-center mb-3 p-3 rounded-3" style={{ background: 'rgba(249, 177, 21, 0.05)' }}>
                       <div>
-                        <div className="fw-bold">{po.po_number}</div>
+                        <div className="fw-bold text-warning">{po.po_number}</div>
                         <small className="text-muted">{po.created_at ? new Date(po.created_at).toLocaleDateString() : ''}</small>
                       </div>
                       <div className="text-end">
                         <div className="fw-bold">£{po.total_amount}</div>
-                        <CBadge color="warning" variant="outline">{po.status}</CBadge>
+                        <CBadge 
+                          style={{ 
+                            background: 'linear-gradient(135deg, #f9b115 0%, #ff8c00 100%)',
+                            border: 'none',
+                            color: 'white',
+                            padding: '4px 8px',
+                            borderRadius: '12px',
+                            fontSize: '0.75em'
+                          }}
+                        >
+                          {po.status}
+                        </CBadge>
                       </div>
                     </div>
                   ))}
                 </div>
               ) : (
-                <div style={{ minHeight: 80 }} className="d-flex align-items-center justify-content-center text-muted">No pending purchase orders</div>
+                <div style={{ minHeight: 80 }} className="d-flex align-items-center justify-content-center text-muted">
+                  <div className="text-center">
+                    <CIcon icon={cilTruck} size="2xl" className="mb-2 opacity-50" />
+                    <div>No pending purchase orders</div>
+                  </div>
+                </div>
               )}
             </CCardBody>
           </CCard>
         </CCol>
         <CCol md={8} sm={12} className="mb-3">
-          <CCard color="light" textColor="dark" style={{ background: '#f8f9fa', border: '1px solid #e9ecef', borderRadius: 16, boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
-            <CCardHeader className="bg-white border-bottom-0 fw-bold fs-5" style={{ borderRadius: '16px 16px 0 0', padding: '18px 24px' }}>
-              <CIcon icon={cilChartPie} className="me-2 text-primary" />Quick Access Reports
-            </CCardHeader>
-            <CCardBody className="pb-4 pt-2">
-              <div className="mb-3 text-secondary" style={{ fontSize: '1.05em' }}>
-                Jump directly to key company reports for detailed financial and sales insights.
+          <CCard color="light" textColor="dark" style={{ 
+            background: 'linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%)', 
+            border: '1px solid #e9ecef', 
+            borderRadius: 20, 
+            boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
+            overflow: 'hidden'
+          }}>
+            <CCardHeader className="border-bottom-0 fw-bold fs-4" style={{ 
+              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              color: 'white',
+              borderRadius: '20px 20px 0 0', 
+              padding: '20px 28px',
+              textAlign: 'center'
+            }}>
+              <CIcon icon={cilChartPie} className="me-2" size="lg" />
+              Quick Access Reports
+              <div className="mt-2" style={{ fontSize: '0.9em', opacity: 0.9 }}>
+                Comprehensive business insights at your fingertips
               </div>
-              <div className="d-flex flex-wrap gap-4 justify-content-center w-100">
+            </CCardHeader>
+            <CCardBody className="pb-5 pt-4" style={{ padding: '24px 28px' }}>
+              <div className="mb-4 text-center">
+                <div className="text-muted mb-3" style={{ fontSize: '1.1em', lineHeight: 1.6 }}>
+                  Access detailed financial reports, analytics, and business insights with just one click
+                </div>
+              </div>
+              
+              <div className="row g-4">
+                <div className="col-md-4 col-sm-6">
+                  <div 
+                    className="report-card h-100 p-4 rounded-3 shadow-sm border-0"
+                    style={{ 
+                      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s ease',
+                      transform: 'translateY(0)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-5px)';
+                      e.currentTarget.style.boxShadow = '0 12px 40px rgba(102, 126, 234, 0.3)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+                    }}
+                    onClick={() => navigate('/reports/product-margins')}
+                  >
+                    <div className="text-center text-white">
+                      <CIcon icon={cilChartPie} size="2xl" className="mb-3" />
+                      <h6 className="fw-bold mb-2">Product Margins</h6>
+                      <p className="small mb-3 opacity-90">Analyze profitability by product</p>
+                      <div className="d-flex justify-content-center">
+                        <span className="badge bg-white text-primary px-3 py-2 rounded-pill">
+                          View Report
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="col-md-4 col-sm-6">
+                  <div 
+                    className="report-card h-100 p-4 rounded-3 shadow-sm border-0"
+                    style={{ 
+                      background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s ease',
+                      transform: 'translateY(0)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-5px)';
+                      e.currentTarget.style.boxShadow = '0 12px 40px rgba(240, 147, 251, 0.3)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+                    }}
+                    onClick={() => navigate('/reports/profit-loss')}
+                  >
+                    <div className="text-center text-white">
+                      <CIcon icon={cilChart} size="2xl" className="mb-3" />
+                      <h6 className="fw-bold mb-2">Profit & Loss</h6>
+                      <p className="small mb-3 opacity-90">Complete P&L statement</p>
+                      <div className="d-flex justify-content-center">
+                        <span className="badge bg-white text-danger px-3 py-2 rounded-pill">
+                          View Report
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="col-md-4 col-sm-6">
+                  <div 
+                    className="report-card h-100 p-4 rounded-3 shadow-sm border-0"
+                    style={{ 
+                      background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s ease',
+                      transform: 'translateY(0)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-5px)';
+                      e.currentTarget.style.boxShadow = '0 12px 40px rgba(79, 172, 254, 0.3)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+                    }}
+                    onClick={() => navigate('/reports/business-dashboard')}
+                  >
+                    <div className="text-center text-white">
+                      <CIcon icon={cilSpeedometer} size="2xl" className="mb-3" />
+                      <h6 className="fw-bold mb-2">Business Dashboard</h6>
+                      <p className="small mb-3 opacity-90">Financial overview & KPIs</p>
+                      <div className="d-flex justify-content-center">
+                        <span className="badge bg-white text-info px-3 py-2 rounded-pill">
+                          View Report
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="mt-4 text-center">
                 <CButton
-                  color="primary"
+                  color="light"
                   variant="outline"
-                  className="px-4 py-3 rounded-pill shadow-sm d-flex align-items-center gap-2 fs-5"
-                  style={{ minWidth: 260 }}
-                  onClick={() => navigate('/reports/product-margins')}
+                  className="px-4 py-2 rounded-pill"
+                  onClick={() => navigate('/reports')}
                 >
-                  <CIcon icon={cilChartPie} /> Product-wise Margin Report
-                </CButton>
-                <CButton
-                  color="info"
-                  variant="outline"
-                  className="px-4 py-3 rounded-pill shadow-sm d-flex align-items-center gap-2 fs-5"
-                  style={{ minWidth: 260 }}
-                  onClick={() => navigate('/reports/profit-loss')}
-                >
-                  <CIcon icon={cilChart} /> Company Profit & Loss (P&L) Report
-                </CButton>
-                <CButton
-                  color="success"
-                  variant="outline"
-                  className="px-4 py-3 rounded-pill shadow-sm d-flex align-items-center gap-2 fs-5"
-                  style={{ minWidth: 260 }}
-                  onClick={() => navigate('/reports/business-dashboard')}
-                >
-                  <CIcon icon={cilSpeedometer} /> Business Financial Dashboard
+                  <CIcon icon={cilList} className="me-2" />
+                  View All Reports
                 </CButton>
               </div>
             </CCardBody>
@@ -302,9 +741,34 @@ const Dashboard = () => {
           <SalesVsPurchasesChart dateRange={dateRange} />
         </CCol>
         <CCol md={6} sm={12} className="mb-3">
-          <CCard color="light" textColor="dark" style={{ background: '#fff', minHeight: 320, border: '1px solid #e9ecef', borderRadius: 12, boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
-            <CCardHeader className="bg-light border-bottom-0 fw-bold" style={{ borderRadius: '12px 12px 0 0', padding: '12px 16px' }}><CIcon icon={cilMoney} className="me-2 text-info" />Expense Breakdown</CCardHeader>
-            <CCardBody>
+          <CCard 
+            className="h-100 border-0 shadow-sm"
+            style={{ 
+              background: 'linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%)',
+              borderRadius: 16,
+              overflow: 'hidden',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-3px)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+            }}
+          >
+            <CCardHeader 
+              className="border-bottom-0 fw-bold text-white" 
+              style={{ 
+                background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+                borderRadius: '16px 16px 0 0', 
+                padding: '16px 20px' 
+              }}
+            >
+              <CIcon icon={cilMoney} className="me-2" />Expense Breakdown
+            </CCardHeader>
+            <CCardBody style={{ padding: '20px' }}>
               <div style={{ position: 'relative', width: '100%', height: 280 }}>
                 <Bar
                   data={{
@@ -314,16 +778,61 @@ const Dashboard = () => {
                         label: 'Expenses (£)',
                         data: expenseData,
                         backgroundColor: [
-                          '#321fdb', '#39f', '#f9b115', '#e55353', '#2eb85c', '#f7b924', '#6f42c1', '#20c997', '#fd7e14', '#e83e8c',
+                          'rgba(102, 126, 234, 0.8)', 'rgba(240, 147, 251, 0.8)', 'rgba(79, 172, 254, 0.8)', 
+                          'rgba(249, 177, 21, 0.8)', 'rgba(46, 184, 92, 0.8)', 'rgba(111, 66, 193, 0.8)', 
+                          'rgba(32, 201, 151, 0.8)', 'rgba(253, 126, 20, 0.8)', 'rgba(232, 62, 140, 0.8)', 'rgba(229, 83, 83, 0.8)',
                         ],
+                        borderColor: [
+                          '#667eea', '#f093fb', '#4facfe', '#f9b115', '#2eb85c', 
+                          '#6f42c1', '#20c997', '#fd7e14', '#e83e8c', '#e55353',
+                        ],
+                        borderWidth: 2,
+                        borderRadius: 8,
+                        borderSkipped: false,
                       },
                     ],
                   }}
                   options={{
                     indexAxis: 'y',
                     responsive: true,
-                    plugins: { legend: { display: false } },
-                    scales: { x: { beginAtZero: true } },
+                    maintainAspectRatio: false,
+                    plugins: { 
+                      legend: { display: false },
+                      tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                        titleColor: 'white',
+                        bodyColor: 'white',
+                        borderColor: '#4facfe',
+                        borderWidth: 1,
+                        cornerRadius: 8,
+                        displayColors: false,
+                      }
+                    },
+                    scales: { 
+                      x: { 
+                        beginAtZero: true,
+                        grid: {
+                          color: 'rgba(0, 0, 0, 0.05)',
+                        },
+                        ticks: {
+                          color: '#666',
+                          font: {
+                            size: 12
+                          }
+                        }
+                      },
+                      y: {
+                        grid: {
+                          display: false,
+                        },
+                        ticks: {
+                          color: '#666',
+                          font: {
+                            size: 12
+                          }
+                        }
+                      }
+                    },
                   }}
                 />
               </div>
