@@ -1,0 +1,244 @@
+/* Invoice Styles - Simple Black and White (ONLY for invoices) */
+.invoice-modal .modal-dialog {
+  max-width: 90%;
+}
+
+/* Only apply black and white styling to invoice containers */
+.invoice-container {
+  background: white;
+  font-family: 'Arial', sans-serif;
+  color: #000;
+}
+
+/* Invoice-specific black and white design - only affects invoice elements */
+.invoice-container .invoice-header h1 {
+  color: #000;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.invoice-container .invoice-header h4 {
+  color: #000;
+  font-weight: bold;
+}
+
+.invoice-container .invoice-header .info,
+.invoice-container .invoice-header .supplier-info {
+  color: #000;
+}
+
+.invoice-container .invoice-items h5,
+.invoice-container .invoice-summary h6,
+.invoice-container .invoice-payment h6,
+.invoice-container .payment-history h6 {
+  color: #000;
+  font-weight: bold;
+}
+
+.invoice-container .invoice-items table,
+.invoice-container .payment-history table {
+  border: 1px solid #000;
+}
+
+.invoice-container .invoice-items th,
+.invoice-container .payment-history th {
+  background-color: #f0f0f0;
+  color: #000;
+  border: 1px solid #000;
+  font-weight: bold;
+}
+
+.invoice-container .invoice-items td,
+.invoice-container .payment-history td {
+  border: 1px solid #000;
+  color: #000;
+}
+
+.invoice-container .invoice-summary table {
+  border: 1px solid #000;
+}
+
+.invoice-container .invoice-summary th,
+.invoice-container .invoice-summary td {
+  border: 1px solid #000;
+  color: #000;
+}
+
+.invoice-container .invoice-summary .table-sm td {
+  padding: 0.5rem;
+}
+
+.invoice-container .invoice-payment .progress {
+  height: 20px;
+  border: 1px solid #000;
+  background-color: #f0f0f0;
+}
+
+.invoice-container .invoice-payment .progress-bar {
+  background-color: #000;
+  color: white;
+  font-weight: bold;
+}
+
+.invoice-container .invoice-footer {
+  border-top: 2px solid #000;
+  color: #000;
+}
+
+/* Badge styles for black and white - only in invoice context */
+.invoice-container .badge {
+  border: 1px solid #000;
+  color: #000;
+  background-color: #f0f0f0;
+}
+
+.invoice-container .badge.bg-success {
+  background-color: #000 !important;
+  color: white !important;
+}
+
+.invoice-container .badge.bg-warning {
+  background-color: #f0f0f0 !important;
+  color: #000 !important;
+}
+
+.invoice-container .badge.bg-danger {
+  background-color: #000 !important;
+  color: white !important;
+}
+
+/* Print Styles - only for invoice printing */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  
+  #invoice-content,
+  #invoice-content * {
+    visibility: visible;
+  }
+  
+  #invoice-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: white;
+    color: #000;
+  }
+  
+  .invoice-container .invoice-header {
+    border-bottom: 2px solid #000 !important;
+  }
+  
+  .invoice-container .invoice-footer {
+    border-top: 2px solid #000 !important;
+  }
+  
+  .invoice-container .table {
+    border-collapse: collapse;
+  }
+  
+  .invoice-container .table th,
+  .invoice-container .table td {
+    border: 1px solid #000;
+    padding: 8px;
+    color: #000;
+  }
+  
+  .invoice-container .table th {
+    background-color: #f0f0f0 !important;
+    color: #000 !important;
+  }
+  
+  .invoice-container .badge {
+    border: 1px solid #000;
+    padding: 4px 8px;
+    color: #000;
+    background-color: #f0f0f0;
+  }
+  
+  .invoice-container .badge.bg-success {
+    background-color: #000 !important;
+    color: white !important;
+  }
+  
+  .invoice-container .badge.bg-warning {
+    background-color: #f0f0f0 !important;
+    color: #000 !important;
+  }
+  
+  .invoice-container .badge.bg-danger {
+    background-color: #000 !important;
+    color: white !important;
+  }
+  
+  .invoice-container .progress {
+    border: 1px solid #000;
+    background-color: #f0f0f0;
+  }
+  
+  .invoice-container .progress-bar {
+    background-color: #000 !important;
+    color: white !important;
+  }
+  
+  /* Hide modal elements in print */
+  .modal-header,
+  .modal-footer,
+  .btn {
+    display: none !important;
+  }
+  
+  /* Ensure proper spacing */
+  .invoice-container .p-4 {
+    padding: 1rem !important;
+  }
+  
+  .invoice-container .mb-3 {
+    margin-bottom: 1rem !important;
+  }
+  
+  .invoice-container .mt-3 {
+    margin-top: 1rem !important;
+  }
+}
+
+/* Responsive adjustments for invoice only */
+@media (max-width: 768px) {
+  .invoice-container .invoice-header .row {
+    flex-direction: column;
+  }
+  
+  .invoice-container .invoice-header .col-6 {
+    width: 100%;
+    text-align: left !important;
+    margin-bottom: 1rem;
+  }
+  
+  .invoice-container .invoice-items table {
+    font-size: 0.8rem;
+  }
+  
+  .invoice-container .invoice-summary .row {
+    flex-direction: column;
+  }
+  
+  .invoice-container .invoice-summary .col-6 {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .invoice-container .payment-history table {
+    font-size: 0.8rem;
+  }
+}
+
+.badge-light-green {
+  background-color: #d1fae5 !important;
+  color: #065f46 !important;
+}
+.badge-light-yellow {
+  background-color: #fef9c3 !important;
+  color: #92400e !important;
+} 

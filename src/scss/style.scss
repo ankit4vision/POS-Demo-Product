@@ -1,0 +1,178 @@
+@use "@coreui/coreui/scss/coreui" as * with ( 
+  $enable-deprecation-messages: false,
+);
+@use "@coreui/chartjs/scss/coreui-chartjs";
+@use "vendors/simplebar";
+
+body {
+  background-color: var(--cui-tertiary-bg);
+}
+
+.wrapper {
+  width: 100%;
+  padding-inline: var(--cui-sidebar-occupy-start, 0) var(--cui-sidebar-occupy-end, 0);
+  will-change: auto;
+  @include transition(padding .15s);
+}
+
+.header > .container-fluid,
+.sidebar-header {
+  min-height: calc(4rem + 1px); // stylelint-disable-line function-disallowed-list
+}
+
+.sidebar-brand-full {
+  margin-left: 3px;
+}
+
+.sidebar-header {
+  .nav-underline-border {
+    --cui-nav-underline-border-link-padding-x: 1rem;
+    --cui-nav-underline-border-gap: 0;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    min-height: calc(4rem + 1px); // stylelint-disable-line function-disallowed-list
+  }
+}
+
+.sidebar-toggler {
+  display: none !important;
+}
+
+.sidebar-narrow,
+.sidebar-narrow-unfoldable:not(:hover) {
+  .sidebar-toggler {
+    margin-inline-end: auto;
+  }
+}
+
+.header > .container-fluid + .container-fluid {
+  min-height: 3rem;
+}
+
+.footer {
+  min-height: calc(3rem + 1px); // stylelint-disable-line function-disallowed-list
+}
+
+@include color-mode(dark) {
+  body {
+    background-color: var(--cui-dark-bg-subtle);
+  }
+
+  .footer {
+    --cui-footer-bg: var(--cui-body-bg);
+  }
+}
+
+// Custom Theme Colors
+:root {
+  // Primary Colors
+  --cui-primary: #424d2b;  // Updated to match sidebar
+  --cui-primary-rgb: 66, 77, 43;
+  --cui-primary-contrast: #fff;
+  --cui-primary-shade: #3a4526;
+  --cui-primary-tint: #555f36;
+
+  // Secondary Colors
+  --cui-secondary: #39f;
+  --cui-secondary-rgb: 51, 153, 255;
+  --cui-secondary-contrast: #fff;
+  --cui-secondary-shade: #3399ff;
+  --cui-secondary-tint: #4da3ff;
+
+  // Success Colors
+  --cui-success: #2eb85c;
+  --cui-success-rgb: 46, 184, 92;
+  --cui-success-contrast: #fff;
+  --cui-success-shade: #29a352;
+  --cui-success-tint: #43bf6d;
+
+  // Info Colors
+  --cui-info: #39f;
+  --cui-info-rgb: 51, 153, 255;
+  --cui-info-contrast: #fff;
+  --cui-info-shade: #3399ff;
+  --cui-info-tint: #4da3ff;
+
+  // Warning Colors
+  --cui-warning: #f9b115;
+  --cui-warning-rgb: 249, 177, 21;
+  --cui-warning-contrast: #fff;
+  --cui-warning-shade: #e09f13;
+  --cui-warning-tint: #fab92c;
+
+  // Danger Colors
+  --cui-danger: #e55353;
+  --cui-danger-rgb: 229, 83, 83;
+  --cui-danger-contrast: #fff;
+  --cui-danger-shade: #cb4b4b;
+  --cui-danger-tint: #e76464;
+
+  // Light Colors
+  --cui-light: #ebedef;
+  --cui-light-rgb: 235, 237, 239;
+  --cui-light-contrast: #000;
+  --cui-light-shade: #cfd1d4;
+  --cui-light-tint: #edf0f2;
+
+  // Dark Colors
+  --cui-dark: #4f5d73;
+  --cui-dark-rgb: 79, 93, 115;
+  --cui-dark-contrast: #fff;
+  --cui-dark-shade: #465267;
+  --cui-dark-tint: #616d80;
+
+  // Sidebar Colors
+  --cui-sidebar-bg: #424d2b;  // Updated sidebar background
+  --cui-sidebar-brand-bg: #424d2b;  // Updated to match
+  --cui-sidebar-brand-color: #fff;
+  --cui-sidebar-nav-link-color: #fff;
+  --cui-sidebar-nav-link-hover-color: #fff;
+  --cui-sidebar-nav-link-hover-bg: rgba(255, 255, 255, 0.1);
+  --cui-sidebar-nav-link-active-color: #fff;
+  --cui-sidebar-nav-link-active-bg: #555f36;  // Lighter shade for active items
+
+  // Header Colors
+  --cui-header-bg: #fff;
+  --cui-header-border-color: #d8dbe0;
+  --cui-header-color: #424d2b;  // Updated to match theme
+  --cui-header-hover-color: #555f36;  // Updated to match theme
+}
+
+// Dark Theme Colors
+[data-coreui-theme="dark"] {
+  --cui-body-bg: #1e1e2d;
+  --cui-body-color: #fff;
+  --cui-header-bg: #1e1e2d;
+  --cui-header-border-color: #2d2d3f;
+  --cui-header-color: #fff;
+  --cui-header-hover-color: #555f36;
+  
+  --cui-sidebar-bg: #424d2b;  // Updated to match light theme
+  --cui-sidebar-brand-bg: #424d2b;  // Updated to match
+  --cui-sidebar-brand-color: #fff;
+  --cui-sidebar-nav-link-color: #fff;
+  --cui-sidebar-nav-link-hover-color: #fff;
+  --cui-sidebar-nav-link-hover-bg: rgba(255, 255, 255, 0.1);
+  --cui-sidebar-nav-link-active-color: #fff;
+  --cui-sidebar-nav-link-active-bg: #555f36;
+}
+
+// Custom Styles
+.sidebar-brand-full {
+  padding: 0.5rem 1rem;
+}
+
+.sidebar-brand-narrow {
+  padding: 0.5rem;
+}
+
+// Add any additional custom styles below
+
+// Ensure rsuite date picker popup is above header
+.rs-picker-daterange-menu,
+.rs-picker-menu {
+  z-index: 2000 !important;
+}
