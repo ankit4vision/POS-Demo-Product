@@ -1,8 +1,8 @@
-# 🏪 Krimah POS System - Complete Feature & Module Documentation
+# 🏪 GoDown - Complete Feature & Module Documentation
 
 ## 📋 Project Overview
 
-**Krimah POS** is a comprehensive, full-stack Point of Sale and Inventory Management System designed for modern retail businesses. Built with cutting-edge technologies, it provides a complete solution for managing sales, purchases, inventory, customers, suppliers, employees, and financial operations all in one integrated platform.
+**GoDown** is a comprehensive, full-stack Point of Sale and Inventory Management System designed for modern retail businesses. Developed by **Codexaa Software Solutions**, it is built with cutting-edge technologies and provides a complete solution for managing sales, purchases, inventory, customers, suppliers, employees, and financial operations all in one integrated platform.
 
 ---
 
@@ -1129,7 +1129,7 @@
 
 ## 📝 Summary
 
-**Krimah POS System** is a comprehensive, feature-rich Point of Sale and Inventory Management solution designed to streamline retail operations. With its modern architecture, intuitive interface, and powerful features, it provides everything a business needs to manage sales, inventory, customers, suppliers, and finances in one integrated platform.
+**GoDown** is a comprehensive, feature-rich Point of Sale and Inventory Management solution designed to streamline retail operations. Developed by **Codexaa Software Solutions**, it features a modern architecture, intuitive interface, and powerful capabilities that provide everything a business needs to manage sales, inventory, customers, suppliers, and finances in one integrated platform.
 
 The system's modular design, role-based security, and extensive reporting capabilities make it suitable for businesses of all sizes, from small retail stores to large multi-location operations. Its cloud-ready architecture and scalable design ensure it can grow with your business.
 
@@ -1137,5 +1137,7 @@ The system's modular design, role-based security, and extensive reporting capabi
 
 **Document Version**: 1.0  
 **Last Updated**: 2024  
-**Project Status**: Production Ready
+**Project Status**: Production Ready  
+**Developed By**: Codexaa Software Solutions  
+**Project Name**: GoDown
 
