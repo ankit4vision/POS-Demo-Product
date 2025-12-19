@@ -31,22 +31,25 @@ const AppHeader = ({ sidebarShow, setSidebarShow }) => {
       position="sticky" 
       className="mb-4"
       style={{
-        background: '#ffffff'
+        background: '#3B721A',
+        borderBottom: '2px solid rgba(167, 224, 107, 0.3)',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
       }}
     >
       <CContainer fluid>
         <CHeaderToggler
           className="ps-1"
           onClick={handleSidebarToggle}
+          style={{ color: '#FFFFFF' }}
         >
-          <CIcon icon={cilMenu} size="xl" />
+          <CIcon icon={cilMenu} size="xl" style={{ color: '#FFFFFF' }} />
         </CHeaderToggler>
         <div className="flex-grow-1 d-flex justify-content-center align-items-center">
           <div
             style={{
               fontSize: 18,
               fontWeight: 600,
-              color: 'rgb(50, 31, 219)',
+              color: '#FFFFFF',
               letterSpacing: 1,
               minWidth: 220,
               textAlign: 'center',
@@ -59,36 +62,64 @@ const AppHeader = ({ sidebarShow, setSidebarShow }) => {
           <div
             className="d-flex align-items-center me-3"
             style={{
-              background: '#fff',
-              border: '1px solid #e9ecef',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
+              background: 'rgba(167, 224, 107, 0.15)',
+              border: '1px solid rgba(167, 224, 107, 0.3)',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
               borderRadius: 24,
               padding: '4px 18px 4px 12px',
               fontWeight: 500,
               fontSize: 16,
-              color: '#321fdb',
+              color: '#FFFFFF',
               minWidth: 220,
               gap: 8,
               fontFamily: 'monospace',
             }}
           >
-            <CIcon icon={cilClock} className="me-2" style={{ color: '#321fdb', fontSize: 20 }} />
-            <span style={{ fontFamily: 'monospace', fontWeight: 700 }}>{timeString}</span>
-            <span style={{ color: '#555', fontWeight: 500 }}>| {dateString}</span>
-            <span style={{ color: '#aaa', fontSize: 14, marginLeft: 4 }}>| {dayString}</span>
+            <CIcon icon={cilClock} className="me-2" style={{ color: '#A7E06B', fontSize: 20 }} />
+            <span style={{ fontFamily: 'monospace', fontWeight: 700, color: '#FFFFFF' }}>{timeString}</span>
+            <span style={{ color: '#A7E06B', fontWeight: 500 }}>| {dateString}</span>
+            <span style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: 14, marginLeft: 4 }}>| {dayString}</span>
           </div>
           {hasPermission && hasPermission('create_pos') && (
-            <Link to="/sales/pos" className="btn btn-primary me-2 d-flex align-items-center" title="Go to POS">
+            <Link 
+              to="/sales/pos" 
+              className="btn me-2 d-flex align-items-center" 
+              title="Go to POS"
+              style={{
+                background: '#A7E06B',
+                color: '#3B721A',
+                border: 'none',
+                fontWeight: 600
+              }}
+            >
               <CIcon icon={cilBarcode} className="me-1" /> POS
             </Link>
           )}
           {hasPermission && hasPermission('view_setting') && (
-            <Link to="/settings" className="btn btn-outline-secondary me-2 d-flex align-items-center" title="Settings">
+            <Link 
+              to="/settings" 
+              className="btn me-2 d-flex align-items-center" 
+              title="Settings"
+              style={{
+                background: 'transparent',
+                color: '#FFFFFF',
+                border: '1px solid rgba(167, 224, 107, 0.5)'
+              }}
+            >
               <CIcon icon={cilSettings} />
             </Link>
           )}
           {hasPermission && hasPermission('view_email') && (
-            <Link to="/emails/inbox" className="btn btn-outline-info me-2 d-flex align-items-center" title="Email Inbox">
+            <Link 
+              to="/emails/inbox" 
+              className="btn me-2 d-flex align-items-center" 
+              title="Email Inbox"
+              style={{
+                background: 'transparent',
+                color: '#FFFFFF',
+                border: '1px solid rgba(167, 224, 107, 0.5)'
+              }}
+            >
               <CIcon icon={cilEnvelopeClosed} />
             </Link>
           )}

@@ -62,7 +62,7 @@ const Dashboard = () => {
   return (
     <div style={{ margin: '0 auto', padding: '24px', background: '#f5f6fa', minHeight: '100vh' }}>
       <div className="mb-4">
-        <h3 className="mb-2">Dashboard</h3>
+        <h3 className="mb-2" style={{ color: '#3B721A', fontWeight: 700 }}>Dashboard</h3>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, maxWidth: 600 }}>
           <div style={{ maxWidth: 320 }}>
             <DateRangePicker
@@ -74,15 +74,36 @@ const Dashboard = () => {
               ranges={[]}
             />
           </div>
-          <CButton size="sm" color="secondary" variant="outline" onClick={() => {
-            const defaultRange = [
-              new Date(now.getFullYear(), now.getMonth(), 1),
-              new Date(now.getFullYear(), now.getMonth() + 1, 0)
-            ];
-            setDateRange(defaultRange);
-            fetchData(defaultRange);
-          }}>Reset</CButton>
-          <CButton size="sm" color="primary" variant="outline" onClick={() => fetchData(dateRange)}>Refresh</CButton>
+          <CButton 
+            size="sm" 
+            variant="outline" 
+            onClick={() => {
+              const defaultRange = [
+                new Date(now.getFullYear(), now.getMonth(), 1),
+                new Date(now.getFullYear(), now.getMonth() + 1, 0)
+              ];
+              setDateRange(defaultRange);
+              fetchData(defaultRange);
+            }}
+            style={{
+              borderColor: '#3B721A',
+              color: '#3B721A'
+            }}
+          >
+            Reset
+          </CButton>
+          <CButton 
+            size="sm" 
+            variant="outline" 
+            onClick={() => fetchData(dateRange)}
+            style={{
+              background: '#3B721A',
+              borderColor: '#3B721A',
+              color: '#FFFFFF'
+            }}
+          >
+            Refresh
+          </CButton>
         </div>
       </div>
       {/* Row 1: Key Metrics */}
@@ -91,15 +112,16 @@ const Dashboard = () => {
           <CCard 
             className="h-100 border-0 shadow-sm"
             style={{ 
-              background: 'linear-gradient(135deg, #e8f2ff 0%, #f0e8ff 25%, #fef8ff 50%, #fff0f5 75%, #e8f8ff 100%)',
+              background: 'linear-gradient(135deg, #e8f5e8 0%, #d4f0d4 25%, #c0ebc0 50%, #a7e06b 75%, #8fd46b 100%)',
               borderRadius: 16,
               overflow: 'hidden',
               transition: 'all 0.3s ease',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              border: '1px solid rgba(59, 114, 26, 0.2)'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-3px)';
-              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(59, 114, 26, 0.2)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
@@ -113,16 +135,16 @@ const Dashboard = () => {
                 style={{
                   width: 60,
                   height: 60,
-                  background: 'rgba(102, 126, 234, 0.1)',
+                  background: 'rgba(59, 114, 26, 0.15)',
                   borderRadius: '50%',
                   backdropFilter: 'blur(10px)'
                 }}
               >
-                <CIcon icon={cilCart} size="xl" className="text-primary" />
+                <CIcon icon={cilCart} size="xl" style={{ color: '#3B721A' }} />
               </div>
               <div>
                 <div className="fs-6 text-muted mb-1">Total Sales (+VAT)</div>
-                <div className="fs-2 fw-bold text-primary">£{summary.total_sales}</div>
+                <div className="fs-2 fw-bold" style={{ color: '#3B721A' }}>£{summary.total_sales}</div>
                 <div className="small text-muted">All sales invoices including VAT</div>
               </div>
             </CCardBody>
@@ -132,15 +154,16 @@ const Dashboard = () => {
           <CCard 
             className="h-100 border-0 shadow-sm"
             style={{ 
-              background: 'linear-gradient(135deg, #e8f2ff 0%, #f0e8ff 25%, #fef8ff 50%, #fff0f5 75%, #e8f8ff 100%)',
+              background: 'linear-gradient(135deg, #fff8e6 0%, #fff0cc 25%, #ffe8b3 50%, #fdd940 75%, #f5d030 100%)',
               borderRadius: 16,
               overflow: 'hidden',
               transition: 'all 0.3s ease',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              border: '1px solid rgba(253, 217, 64, 0.3)'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-3px)';
-              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(253, 217, 64, 0.3)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
@@ -154,16 +177,16 @@ const Dashboard = () => {
                 style={{
                   width: 60,
                   height: 60,
-                  background: 'rgba(240, 147, 251, 0.1)',
+                  background: 'rgba(253, 217, 64, 0.2)',
                   borderRadius: '50%',
                   backdropFilter: 'blur(10px)'
                 }}
               >
-                <CIcon icon={cilTruck} size="xl" className="text-danger" />
+                <CIcon icon={cilTruck} size="xl" style={{ color: '#8B6914' }} />
               </div>
               <div>
                 <div className="fs-6 text-muted mb-1">Total Purchases</div>
-                <div className="fs-2 fw-bold text-danger">£{summary.total_purchases}</div>
+                <div className="fs-2 fw-bold" style={{ color: '#8B6914' }}>£{summary.total_purchases}</div>
                 <div className="small text-muted">Purchase orders (excluding drafts)</div>
               </div>
             </CCardBody>
@@ -173,15 +196,16 @@ const Dashboard = () => {
           <CCard 
             className="h-100 border-0 shadow-sm"
             style={{ 
-              background: 'linear-gradient(135deg, #e8f2ff 0%, #f0e8ff 25%, #fef8ff 50%, #fff0f5 75%, #e8f8ff 100%)',
+              background: 'linear-gradient(135deg, #e8f5e8 0%, #d4f0d4 25%, #c0ebc0 50%, #a7e06b 75%, #8fd46b 100%)',
               borderRadius: 16,
               overflow: 'hidden',
               transition: 'all 0.3s ease',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              border: '1px solid rgba(59, 114, 26, 0.2)'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-3px)';
-              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(59, 114, 26, 0.2)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
@@ -195,16 +219,16 @@ const Dashboard = () => {
                 style={{
                   width: 60,
                   height: 60,
-                  background: 'rgba(79, 172, 254, 0.1)',
+                  background: 'rgba(59, 114, 26, 0.15)',
                   borderRadius: '50%',
                   backdropFilter: 'blur(10px)'
                 }}
               >
-                <CIcon icon={cilMoney} size="xl" className="text-info" />
+                <CIcon icon={cilMoney} size="xl" style={{ color: '#3B721A' }} />
               </div>
               <div>
                 <div className="fs-6 text-muted mb-1">Total Expenses</div>
-                <div className="fs-2 fw-bold text-info">£{summary.total_expenses}</div>
+                <div className="fs-2 fw-bold" style={{ color: '#3B721A' }}>£{summary.total_expenses}</div>
                 <div className="small text-muted">All company expenses</div>
               </div>
             </CCardBody>
@@ -217,15 +241,16 @@ const Dashboard = () => {
           <CCard 
             className="h-100 border-0 shadow-sm"
             style={{ 
-              background: 'linear-gradient(135deg, #e8f2ff 0%, #f0e8ff 25%, #fef8ff 50%, #fff0f5 75%, #e8f8ff 100%)',
+              background: 'linear-gradient(135deg, #e8f5e8 0%, #d4f0d4 25%, #c0ebc0 50%, #a7e06b 75%, #8fd46b 100%)',
               borderRadius: 16,
               overflow: 'hidden',
               transition: 'all 0.3s ease',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              border: '1px solid rgba(59, 114, 26, 0.2)'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-3px)';
-              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(59, 114, 26, 0.2)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
@@ -239,16 +264,16 @@ const Dashboard = () => {
                 style={{
                   width: 60,
                   height: 60,
-                  background: 'rgba(102, 126, 234, 0.1)',
+                  background: 'rgba(59, 114, 26, 0.15)',
                   borderRadius: '50%',
                   backdropFilter: 'blur(10px)'
                 }}
               >
-                <CIcon icon={cilUser} size="xl" className="text-secondary" />
+                <CIcon icon={cilUser} size="xl" style={{ color: '#3B721A' }} />
               </div>
               <div>
                 <div className="fs-6 text-muted mb-1">Total Customers</div>
-                <div className="fs-2 fw-bold text-secondary">{summary.total_customers}</div>
+                <div className="fs-2 fw-bold" style={{ color: '#3B721A' }}>{summary.total_customers}</div>
                 <div className="small text-muted">Active customer base</div>
               </div>
             </CCardBody>
@@ -258,15 +283,16 @@ const Dashboard = () => {
           <CCard 
             className="h-100 border-0 shadow-sm"
             style={{ 
-              background: 'linear-gradient(135deg, #e8f2ff 0%, #f0e8ff 25%, #fef8ff 50%, #fff0f5 75%, #e8f8ff 100%)',
+              background: 'linear-gradient(135deg, #fff8e6 0%, #fff0cc 25%, #ffe8b3 50%, #fdd940 75%, #f5d030 100%)',
               borderRadius: 16,
               overflow: 'hidden',
               transition: 'all 0.3s ease',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              border: '1px solid rgba(253, 217, 64, 0.3)'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-3px)';
-              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(253, 217, 64, 0.3)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
@@ -280,16 +306,16 @@ const Dashboard = () => {
                 style={{
                   width: 60,
                   height: 60,
-                  background: 'rgba(249, 177, 21, 0.1)',
+                  background: 'rgba(253, 217, 64, 0.2)',
                   borderRadius: '50%',
                   backdropFilter: 'blur(10px)'
                 }}
               >
-                <CIcon icon={cilList} size="xl" className="text-warning" />
+                <CIcon icon={cilList} size="xl" style={{ color: '#8B6914' }} />
               </div>
               <div>
                 <div className="fs-6 text-muted mb-1">Total Products</div>
-                <div className="fs-2 fw-bold text-warning">{summary.total_products}</div>
+                <div className="fs-2 fw-bold" style={{ color: '#8B6914' }}>{summary.total_products}</div>
                 <div className="small text-muted">Items in inventory</div>
               </div>
             </CCardBody>
@@ -299,15 +325,16 @@ const Dashboard = () => {
           <CCard 
             className="h-100 border-0 shadow-sm"
             style={{ 
-              background: 'linear-gradient(135deg, #e8f2ff 0%, #f0e8ff 25%, #fef8ff 50%, #fff0f5 75%, #e8f8ff 100%)',
+              background: 'linear-gradient(135deg, #e8f5e8 0%, #d4f0d4 25%, #c0ebc0 50%, #a7e06b 75%, #8fd46b 100%)',
               borderRadius: 16,
               overflow: 'hidden',
               transition: 'all 0.3s ease',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              border: '1px solid rgba(59, 114, 26, 0.2)'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-3px)';
-              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(59, 114, 26, 0.2)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
@@ -321,16 +348,16 @@ const Dashboard = () => {
                 style={{
                   width: 60,
                   height: 60,
-                  background: 'rgba(79, 172, 254, 0.1)',
+                  background: 'rgba(59, 114, 26, 0.15)',
                   borderRadius: '50%',
                   backdropFilter: 'blur(10px)'
                 }}
               >
-                <CIcon icon={cilWarning} size="xl" className="text-info" />
+                <CIcon icon={cilWarning} size="xl" style={{ color: '#3B721A' }} />
               </div>
               <div>
                 <div className="fs-6 text-muted mb-1">Low Stock Alert</div>
-                <div className="fs-2 fw-bold text-info">{summary.low_stock}</div>
+                <div className="fs-2 fw-bold" style={{ color: '#3B721A' }}>{summary.low_stock}</div>
                 <div className="small text-muted">Need restocking</div>
               </div>
             </CCardBody>
@@ -360,7 +387,7 @@ const Dashboard = () => {
             <CCardHeader 
               className="border-bottom-0 fw-bold text-white" 
               style={{ 
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                background: 'linear-gradient(135deg, #3B721A 0%, #4a8a2a 100%)',
                 borderRadius: '16px 16px 0 0', 
                 padding: '16px 20px' 
               }}
@@ -371,14 +398,14 @@ const Dashboard = () => {
               {summary.top_selling_products && summary.top_selling_products.length > 0 ? (
                 <div>
                   {summary.top_selling_products.map((product, index) => (
-                    <div key={index} className="d-flex justify-content-between align-items-center mb-3 p-3 rounded-3" style={{ background: 'rgba(102, 126, 234, 0.05)' }}>
+                    <div key={index} className="d-flex justify-content-between align-items-center mb-3 p-3 rounded-3" style={{ background: 'rgba(59, 114, 26, 0.05)' }}>
                       <div>
-                        <span className="fw-bold me-2 text-primary">#{index + 1}</span>
+                        <span className="fw-bold me-2" style={{ color: '#3B721A' }}>#{index + 1}</span>
                         <span className="fw-medium">{product.name}</span>
                       </div>
                       <CBadge 
                         style={{ 
-                          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                          background: 'linear-gradient(135deg, #3B721A 0%, #4a8a2a 100%)',
                           border: 'none',
                           color: 'white',
                           padding: '6px 12px',
@@ -422,7 +449,7 @@ const Dashboard = () => {
             <CCardHeader 
               className="border-bottom-0 fw-bold text-white" 
               style={{ 
-                background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                background: 'linear-gradient(135deg, #3B721A 0%, #4a8a2a 100%)',
                 borderRadius: '16px 16px 0 0', 
                 padding: '16px 20px' 
               }}
@@ -433,14 +460,14 @@ const Dashboard = () => {
               {summary.best_customers && summary.best_customers.length > 0 ? (
                 <div>
                   {summary.best_customers.map((customer, index) => (
-                    <div key={index} className="d-flex justify-content-between align-items-center mb-3 p-3 rounded-3" style={{ background: 'rgba(240, 147, 251, 0.05)' }}>
+                    <div key={index} className="d-flex justify-content-between align-items-center mb-3 p-3 rounded-3" style={{ background: 'rgba(59, 114, 26, 0.05)' }}>
                       <div>
-                        <span className="fw-bold me-2 text-danger">#{index + 1}</span>
+                        <span className="fw-bold me-2" style={{ color: '#3B721A' }}>#{index + 1}</span>
                         <span className="fw-medium">{customer.name}</span>
                       </div>
                       <CBadge 
                         style={{ 
-                          background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                          background: 'linear-gradient(135deg, #3B721A 0%, #4a8a2a 100%)',
                           border: 'none',
                           color: 'white',
                           padding: '6px 12px',
@@ -484,7 +511,7 @@ const Dashboard = () => {
             <CCardHeader 
               className="border-bottom-0 fw-bold text-white" 
               style={{ 
-                background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+                background: 'linear-gradient(135deg, #3B721A 0%, #4a8a2a 100%)',
                 borderRadius: '16px 16px 0 0', 
                 padding: '16px 20px' 
               }}
@@ -495,14 +522,14 @@ const Dashboard = () => {
               {summary.best_suppliers && summary.best_suppliers.length > 0 ? (
                 <div>
                   {summary.best_suppliers.map((supplier, index) => (
-                    <div key={index} className="d-flex justify-content-between align-items-center mb-3 p-3 rounded-3" style={{ background: 'rgba(79, 172, 254, 0.05)' }}>
+                    <div key={index} className="d-flex justify-content-between align-items-center mb-3 p-3 rounded-3" style={{ background: 'rgba(59, 114, 26, 0.05)' }}>
                       <div>
-                        <span className="fw-bold me-2 text-info">#{index + 1}</span>
+                        <span className="fw-bold me-2" style={{ color: '#3B721A' }}>#{index + 1}</span>
                         <span className="fw-medium">{supplier.name}</span>
                       </div>
                       <CBadge 
                         style={{ 
-                          background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+                          background: 'linear-gradient(135deg, #3B721A 0%, #4a8a2a 100%)',
                           border: 'none',
                           color: 'white',
                           padding: '6px 12px',
@@ -549,9 +576,10 @@ const Dashboard = () => {
             <CCardHeader 
               className="border-bottom-0 fw-bold text-white" 
               style={{ 
-                background: 'linear-gradient(135deg, #f9b115 0%, #ff8c00 100%)',
+                background: 'linear-gradient(135deg, #FDD940 0%, #f5d030 100%)',
                 borderRadius: '16px 16px 0 0', 
-                padding: '16px 20px' 
+                padding: '16px 20px',
+                color: '#3B721A'
               }}
             >
               <CIcon icon={cilTruck} className="me-2" />Pending Purchase Orders
@@ -560,21 +588,22 @@ const Dashboard = () => {
               {summary.pending_purchase_orders && summary.pending_purchase_orders.length > 0 ? (
                 <div>
                   {summary.pending_purchase_orders.map((po, index) => (
-                    <div key={po.id} className="d-flex justify-content-between align-items-center mb-3 p-3 rounded-3" style={{ background: 'rgba(249, 177, 21, 0.05)' }}>
+                    <div key={po.id} className="d-flex justify-content-between align-items-center mb-3 p-3 rounded-3" style={{ background: 'rgba(253, 217, 64, 0.1)' }}>
                       <div>
-                        <div className="fw-bold text-warning">{po.po_number}</div>
+                        <div className="fw-bold" style={{ color: '#8B6914' }}>{po.po_number}</div>
                         <small className="text-muted">{po.created_at ? new Date(po.created_at).toLocaleDateString() : ''}</small>
                       </div>
                       <div className="text-end">
-                        <div className="fw-bold">£{po.total_amount}</div>
+                        <div className="fw-bold" style={{ color: '#8B6914' }}>£{po.total_amount}</div>
                         <CBadge 
                           style={{ 
-                            background: 'linear-gradient(135deg, #f9b115 0%, #ff8c00 100%)',
+                            background: 'linear-gradient(135deg, #FDD940 0%, #f5d030 100%)',
                             border: 'none',
-                            color: 'white',
+                            color: '#3B721A',
                             padding: '4px 8px',
                             borderRadius: '12px',
-                            fontSize: '0.75em'
+                            fontSize: '0.75em',
+                            fontWeight: 600
                           }}
                         >
                           {po.status}
@@ -603,7 +632,7 @@ const Dashboard = () => {
             overflow: 'hidden'
           }}>
             <CCardHeader className="border-bottom-0 fw-bold fs-4" style={{ 
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              background: 'linear-gradient(135deg, #3B721A 0%, #4a8a2a 100%)',
               color: 'white',
               borderRadius: '20px 20px 0 0', 
               padding: '20px 28px',
@@ -627,14 +656,14 @@ const Dashboard = () => {
                   <div 
                     className="report-card h-100 p-4 rounded-3 shadow-sm border-0"
                     style={{ 
-                      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                      background: 'linear-gradient(135deg, #3B721A 0%, #4a8a2a 100%)',
                       cursor: 'pointer',
                       transition: 'all 0.3s ease',
                       transform: 'translateY(0)'
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.transform = 'translateY(-5px)';
-                      e.currentTarget.style.boxShadow = '0 12px 40px rgba(102, 126, 234, 0.3)';
+                      e.currentTarget.style.boxShadow = '0 12px 40px rgba(59, 114, 26, 0.3)';
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.transform = 'translateY(0)';
@@ -647,7 +676,7 @@ const Dashboard = () => {
                       <h6 className="fw-bold mb-2">Product Margins</h6>
                       <p className="small mb-3 opacity-90">Analyze profitability by product</p>
                       <div className="d-flex justify-content-center">
-                        <span className="badge bg-white text-primary px-3 py-2 rounded-pill">
+                        <span className="badge bg-white px-3 py-2 rounded-pill" style={{ color: '#3B721A' }}>
                           View Report
                         </span>
                       </div>
@@ -659,14 +688,14 @@ const Dashboard = () => {
                   <div 
                     className="report-card h-100 p-4 rounded-3 shadow-sm border-0"
                     style={{ 
-                      background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                      background: 'linear-gradient(135deg, #A7E06B 0%, #8fd46b 100%)',
                       cursor: 'pointer',
                       transition: 'all 0.3s ease',
                       transform: 'translateY(0)'
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.transform = 'translateY(-5px)';
-                      e.currentTarget.style.boxShadow = '0 12px 40px rgba(240, 147, 251, 0.3)';
+                      e.currentTarget.style.boxShadow = '0 12px 40px rgba(167, 224, 107, 0.3)';
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.transform = 'translateY(0)';
@@ -674,12 +703,12 @@ const Dashboard = () => {
                     }}
                     onClick={() => navigate('/reports/profit-loss')}
                   >
-                    <div className="text-center text-white">
+                    <div className="text-center" style={{ color: '#3B721A' }}>
                       <CIcon icon={cilChart} size="2xl" className="mb-3" />
                       <h6 className="fw-bold mb-2">Profit & Loss</h6>
                       <p className="small mb-3 opacity-90">Complete P&L statement</p>
                       <div className="d-flex justify-content-center">
-                        <span className="badge bg-white text-danger px-3 py-2 rounded-pill">
+                        <span className="badge bg-white px-3 py-2 rounded-pill" style={{ color: '#3B721A' }}>
                           View Report
                         </span>
                       </div>
@@ -691,14 +720,14 @@ const Dashboard = () => {
                   <div 
                     className="report-card h-100 p-4 rounded-3 shadow-sm border-0"
                     style={{ 
-                      background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+                      background: 'linear-gradient(135deg, #FDD940 0%, #f5d030 100%)',
                       cursor: 'pointer',
                       transition: 'all 0.3s ease',
                       transform: 'translateY(0)'
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.transform = 'translateY(-5px)';
-                      e.currentTarget.style.boxShadow = '0 12px 40px rgba(79, 172, 254, 0.3)';
+                      e.currentTarget.style.boxShadow = '0 12px 40px rgba(253, 217, 64, 0.3)';
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.transform = 'translateY(0)';
@@ -706,12 +735,12 @@ const Dashboard = () => {
                     }}
                     onClick={() => navigate('/reports/business-dashboard')}
                   >
-                    <div className="text-center text-white">
+                    <div className="text-center" style={{ color: '#3B721A' }}>
                       <CIcon icon={cilSpeedometer} size="2xl" className="mb-3" />
                       <h6 className="fw-bold mb-2">Business Dashboard</h6>
                       <p className="small mb-3 opacity-90">Financial overview & KPIs</p>
                       <div className="d-flex justify-content-center">
-                        <span className="badge bg-white text-info px-3 py-2 rounded-pill">
+                        <span className="badge bg-white px-3 py-2 rounded-pill" style={{ color: '#3B721A' }}>
                           View Report
                         </span>
                       </div>
@@ -722,10 +751,14 @@ const Dashboard = () => {
               
               <div className="mt-4 text-center">
                 <CButton
-                  color="light"
                   variant="outline"
                   className="px-4 py-2 rounded-pill"
                   onClick={() => navigate('/reports')}
+                  style={{
+                    borderColor: '#3B721A',
+                    color: '#3B721A',
+                    fontWeight: 600
+                  }}
                 >
                   <CIcon icon={cilList} className="me-2" />
                   View All Reports
@@ -761,7 +794,7 @@ const Dashboard = () => {
             <CCardHeader 
               className="border-bottom-0 fw-bold text-white" 
               style={{ 
-                background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+                background: 'linear-gradient(135deg, #3B721A 0%, #4a8a2a 100%)',
                 borderRadius: '16px 16px 0 0', 
                 padding: '16px 20px' 
               }}
@@ -778,13 +811,13 @@ const Dashboard = () => {
                         label: 'Expenses (£)',
                         data: expenseData,
                         backgroundColor: [
-                          'rgba(102, 126, 234, 0.8)', 'rgba(240, 147, 251, 0.8)', 'rgba(79, 172, 254, 0.8)', 
-                          'rgba(249, 177, 21, 0.8)', 'rgba(46, 184, 92, 0.8)', 'rgba(111, 66, 193, 0.8)', 
-                          'rgba(32, 201, 151, 0.8)', 'rgba(253, 126, 20, 0.8)', 'rgba(232, 62, 140, 0.8)', 'rgba(229, 83, 83, 0.8)',
+                          'rgba(59, 114, 26, 0.8)', 'rgba(167, 224, 107, 0.8)', 'rgba(253, 217, 64, 0.8)', 
+                          'rgba(74, 138, 42, 0.8)', 'rgba(143, 212, 107, 0.8)', 'rgba(69, 178, 77, 0.8)', 
+                          'rgba(105, 178, 77, 0.8)', 'rgba(151, 217, 130, 0.8)', 'rgba(245, 208, 48, 0.8)', 'rgba(139, 105, 20, 0.8)',
                         ],
                         borderColor: [
-                          '#667eea', '#f093fb', '#4facfe', '#f9b115', '#2eb85c', 
-                          '#6f42c1', '#20c997', '#fd7e14', '#e83e8c', '#e55353',
+                          '#3B721A', '#A7E06B', '#FDD940', '#4a8a2a', '#8fd46b', 
+                          '#45b24d', '#69b24d', '#97d982', '#f5d030', '#8b6914',
                         ],
                         borderWidth: 2,
                         borderRadius: 8,

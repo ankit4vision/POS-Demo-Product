@@ -28,21 +28,34 @@ const AppHeaderDropdown = () => {
   return (
     <CDropdown variant="nav-item">
       <CDropdownToggle placement="bottom-end" className="py-0" caret={false}>
-        <CAvatar color="primary" textColor="white" size="md">
+        <CAvatar 
+          size="md"
+          style={{
+            backgroundColor: '#A7E06B',
+            color: '#3B721A',
+            fontWeight: 700
+          }}
+        >
           {user?.name?.charAt(0) || 'U'}
         </CAvatar>
       </CDropdownToggle>
-      <CDropdownMenu className="pt-0" placement="bottom-end">
-        <CDropdownHeader className="bg-light fw-semibold py-2">
+      <CDropdownMenu className="pt-0" placement="bottom-end" style={{ border: '1px solid rgba(59, 114, 26, 0.2)' }}>
+        <CDropdownHeader 
+          className="fw-semibold py-2"
+          style={{
+            background: '#3B721A',
+            color: '#FFFFFF'
+          }}
+        >
           {user?.name || 'User'}
         </CDropdownHeader>
-        <CDropdownItem onClick={() => navigate('/profile')}>
-          <CIcon icon={cilUser} className="me-2" />
+        <CDropdownItem onClick={() => navigate('/profile')} style={{ color: '#3B721A' }}>
+          <CIcon icon={cilUser} className="me-2" style={{ color: '#3B721A' }} />
           Profile
         </CDropdownItem>
         <CDropdownDivider />
-        <CDropdownItem onClick={handleLogout}>
-          <CIcon icon={cilAccountLogout} className="me-2" />
+        <CDropdownItem onClick={handleLogout} style={{ color: '#3B721A' }}>
+          <CIcon icon={cilAccountLogout} className="me-2" style={{ color: '#3B721A' }} />
           Logout
         </CDropdownItem>
       </CDropdownMenu>
