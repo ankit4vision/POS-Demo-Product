@@ -11,7 +11,9 @@ const AppSidebar = ({ sidebarShow, setSidebarShow, navigation }) => {
   const sidebarStyle = {
     background: 'linear-gradient(135deg, #e8f2ff 0%, #f0e8ff 25%, #fef8ff 50%, #fff0f5 75%, #e8f8ff 100%)',
     backgroundSize: '400% 400%',
-    animation: 'gradientShift 15s ease infinite'
+    animation: 'gradientShift 15s ease infinite',
+    borderRight: '2px solid rgba(66, 77, 43, 0.2)',
+    boxShadow: '2px 0 8px rgba(0, 0, 0, 0.1)'
   };
 
   return (
