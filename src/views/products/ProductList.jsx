@@ -6,7 +6,7 @@ import {
   CCard, CCardHeader, CCardBody, CButton, CAlert, CSpinner, CTable, CTableHead, CTableRow, CTableHeaderCell, CTableBody, CTableDataCell,
   CForm, CFormInput, CFormSelect, CPagination, CPaginationItem, CInputGroup, CInputGroupText, CRow, CCol, CImage, CBadge, CModal, CModalHeader, CModalBody, CModalFooter
 } from '@coreui/react';
-import { cilBasket, cilWarning, cilPlus, cilSearch, cilFilter, cilPencil, cilTrash, cilInfo } from '@coreui/icons';
+import { cilBasket, cilWarning, cilPlus, cilSearch, cilFilter, cilPencil, cilTrash, cilInfo, cilImage } from '@coreui/icons';
 import CIcon from '@coreui/icons-react';
 import PermissionGuard from '../../components/PermissionGuard';
 import { useAuth } from '../../context/AuthContext';
@@ -347,8 +347,15 @@ function ProductList() {
                             />
                           ) : (
                             <div className="bg-light d-flex align-items-center justify-content-center" 
-                                 style={{ width: 48, height: 48, borderRadius: '0.375rem', marginRight: 12 }}>
-                              <div className="text-muted small">No Image</div>
+                                 style={{ 
+                                   width: 48, 
+                                   height: 48, 
+                                   borderRadius: '0.375rem', 
+                                   marginRight: 12,
+                                   background: 'rgba(59, 114, 26, 0.05)',
+                                   border: '1px solid rgba(59, 114, 26, 0.2)'
+                                 }}>
+                              <CIcon icon={cilImage} size="lg" style={{ color: 'rgba(59, 114, 26, 0.5)' }} />
                             </div>
                           )}
                           <div>

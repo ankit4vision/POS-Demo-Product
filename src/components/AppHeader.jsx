@@ -31,25 +31,25 @@ const AppHeader = ({ sidebarShow, setSidebarShow }) => {
       position="sticky" 
       className="mb-4"
       style={{
-        background: '#3B721A',
-        borderBottom: '2px solid rgba(167, 224, 107, 0.3)',
-        boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+        background: '#FFFFFF',
+        borderBottom: '2px solid rgba(0, 0, 0, 0.1)',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
       }}
     >
       <CContainer fluid>
         <CHeaderToggler
           className="ps-1"
           onClick={handleSidebarToggle}
-          style={{ color: '#FFFFFF' }}
+          style={{ color: '#3B721A' }}
         >
-          <CIcon icon={cilMenu} size="xl" style={{ color: '#FFFFFF' }} />
+          <CIcon icon={cilMenu} size="xl" style={{ color: '#3B721A' }} />
         </CHeaderToggler>
         <div className="flex-grow-1 d-flex justify-content-center align-items-center">
           <div
             style={{
               fontSize: 18,
               fontWeight: 600,
-              color: '#FFFFFF',
+              color: '#3B721A',
               letterSpacing: 1,
               minWidth: 220,
               textAlign: 'center',
@@ -62,23 +62,23 @@ const AppHeader = ({ sidebarShow, setSidebarShow }) => {
           <div
             className="d-flex align-items-center me-3"
             style={{
-              background: 'rgba(167, 224, 107, 0.15)',
-              border: '1px solid rgba(167, 224, 107, 0.3)',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+              background: 'rgba(59, 114, 26, 0.08)',
+              border: '1px solid rgba(59, 114, 26, 0.2)',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
               borderRadius: 24,
               padding: '4px 18px 4px 12px',
               fontWeight: 500,
               fontSize: 16,
-              color: '#FFFFFF',
+              color: '#3B721A',
               minWidth: 220,
               gap: 8,
               fontFamily: 'monospace',
             }}
           >
-            <CIcon icon={cilClock} className="me-2" style={{ color: '#A7E06B', fontSize: 20 }} />
-            <span style={{ fontFamily: 'monospace', fontWeight: 700, color: '#FFFFFF' }}>{timeString}</span>
-            <span style={{ color: '#A7E06B', fontWeight: 500 }}>| {dateString}</span>
-            <span style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: 14, marginLeft: 4 }}>| {dayString}</span>
+            <CIcon icon={cilClock} className="me-2" style={{ color: '#3B721A', fontSize: 20 }} />
+            <span style={{ fontFamily: 'monospace', fontWeight: 700, color: '#3B721A' }}>{timeString}</span>
+            <span style={{ color: '#3B721A', fontWeight: 500, opacity: 0.8 }}>| {dateString}</span>
+            <span style={{ color: 'rgba(59, 114, 26, 0.6)', fontSize: 14, marginLeft: 4 }}>| {dayString}</span>
           </div>
           {hasPermission && hasPermission('create_pos') && (
             <Link 
@@ -86,8 +86,8 @@ const AppHeader = ({ sidebarShow, setSidebarShow }) => {
               className="btn me-2 d-flex align-items-center" 
               title="Go to POS"
               style={{
-                background: '#A7E06B',
-                color: '#3B721A',
+                background: '#3B721A',
+                color: '#FFFFFF',
                 border: 'none',
                 fontWeight: 600
               }}
@@ -102,8 +102,8 @@ const AppHeader = ({ sidebarShow, setSidebarShow }) => {
               title="Settings"
               style={{
                 background: 'transparent',
-                color: '#FFFFFF',
-                border: '1px solid rgba(167, 224, 107, 0.5)'
+                color: '#3B721A',
+                border: '1px solid rgba(59, 114, 26, 0.3)'
               }}
             >
               <CIcon icon={cilSettings} />
@@ -116,8 +116,8 @@ const AppHeader = ({ sidebarShow, setSidebarShow }) => {
               title="Email Inbox"
               style={{
                 background: 'transparent',
-                color: '#FFFFFF',
-                border: '1px solid rgba(167, 224, 107, 0.5)'
+                color: '#3B721A',
+                border: '1px solid rgba(59, 114, 26, 0.3)'
               }}
             >
               <CIcon icon={cilEnvelopeClosed} />

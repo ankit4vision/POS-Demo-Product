@@ -16,8 +16,9 @@ const Dashboard = () => {
   const [expenseBreakdown, setExpenseBreakdown] = useState([])
   const [loading, setLoading] = useState(true)
   const now = new Date();
-  const firstDay = new Date(now.getFullYear(), now.getMonth(), 1);
-  const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+  // Default date range: September 1-30, 2025
+  const firstDay = new Date(2025, 8, 1); // September 1, 2025 (month is 0-indexed)
+  const lastDay = new Date(2025, 8, 30); // September 30, 2025
 
   const [dateRange, setDateRange] = useState([
     firstDay,
@@ -60,7 +61,7 @@ const Dashboard = () => {
   const totalExpenses = expenseData.reduce((sum, val) => sum + Number(val), 0)
 
   return (
-    <div style={{ margin: '0 auto', padding: '24px', background: '#f5f6fa', minHeight: '100vh' }}>
+    <div style={{ margin: '0 auto', padding: '24px', background: '#FFFFFF', minHeight: '100vh' }}>
       <div className="mb-4">
         <h3 className="mb-2" style={{ color: '#3B721A', fontWeight: 700 }}>Dashboard</h3>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, maxWidth: 600 }}>
@@ -79,8 +80,8 @@ const Dashboard = () => {
             variant="outline" 
             onClick={() => {
               const defaultRange = [
-                new Date(now.getFullYear(), now.getMonth(), 1),
-                new Date(now.getFullYear(), now.getMonth() + 1, 0)
+                new Date(2025, 8, 1), // September 1, 2025
+                new Date(2025, 8, 30) // September 30, 2025
               ];
               setDateRange(defaultRange);
               fetchData(defaultRange);
@@ -112,20 +113,23 @@ const Dashboard = () => {
           <CCard 
             className="h-100 border-0 shadow-sm"
             style={{ 
-              background: 'linear-gradient(135deg, #e8f5e8 0%, #d4f0d4 25%, #c0ebc0 50%, #a7e06b 75%, #8fd46b 100%)',
+              background: 'rgba(59, 114, 26, 0.02)',
               borderRadius: 16,
               overflow: 'hidden',
               transition: 'all 0.3s ease',
               cursor: 'pointer',
-              border: '1px solid rgba(59, 114, 26, 0.2)'
+              border: '1px solid rgba(59, 114, 26, 0.2)',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-3px)';
-              e.currentTarget.style.boxShadow = '0 8px 25px rgba(59, 114, 26, 0.2)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.12)';
+              e.currentTarget.style.background = 'rgba(59, 114, 26, 0.05)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)';
+              e.currentTarget.style.background = 'rgba(59, 114, 26, 0.02)';
             }}
             onClick={() => navigate('/invoices')}
           >
@@ -135,9 +139,9 @@ const Dashboard = () => {
                 style={{
                   width: 60,
                   height: 60,
-                  background: 'rgba(59, 114, 26, 0.15)',
+                  background: 'rgba(59, 114, 26, 0.08)',
                   borderRadius: '50%',
-                  backdropFilter: 'blur(10px)'
+                  border: '1px solid rgba(59, 114, 26, 0.2)'
                 }}
               >
                 <CIcon icon={cilCart} size="xl" style={{ color: '#3B721A' }} />
@@ -154,20 +158,23 @@ const Dashboard = () => {
           <CCard 
             className="h-100 border-0 shadow-sm"
             style={{ 
-              background: 'linear-gradient(135deg, #fff8e6 0%, #fff0cc 25%, #ffe8b3 50%, #fdd940 75%, #f5d030 100%)',
+              background: 'rgba(253, 217, 64, 0.02)',
               borderRadius: 16,
               overflow: 'hidden',
               transition: 'all 0.3s ease',
               cursor: 'pointer',
-              border: '1px solid rgba(253, 217, 64, 0.3)'
+              border: '1px solid rgba(253, 217, 64, 0.3)',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-3px)';
-              e.currentTarget.style.boxShadow = '0 8px 25px rgba(253, 217, 64, 0.3)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.12)';
+              e.currentTarget.style.background = 'rgba(253, 217, 64, 0.05)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)';
+              e.currentTarget.style.background = 'rgba(253, 217, 64, 0.02)';
             }}
             onClick={() => navigate('/purchases')}
           >
@@ -177,9 +184,9 @@ const Dashboard = () => {
                 style={{
                   width: 60,
                   height: 60,
-                  background: 'rgba(253, 217, 64, 0.2)',
+                  background: 'rgba(253, 217, 64, 0.08)',
                   borderRadius: '50%',
-                  backdropFilter: 'blur(10px)'
+                  border: '1px solid rgba(253, 217, 64, 0.3)'
                 }}
               >
                 <CIcon icon={cilTruck} size="xl" style={{ color: '#8B6914' }} />
@@ -196,20 +203,23 @@ const Dashboard = () => {
           <CCard 
             className="h-100 border-0 shadow-sm"
             style={{ 
-              background: 'linear-gradient(135deg, #e8f5e8 0%, #d4f0d4 25%, #c0ebc0 50%, #a7e06b 75%, #8fd46b 100%)',
+              background: 'rgba(59, 114, 26, 0.02)',
               borderRadius: 16,
               overflow: 'hidden',
               transition: 'all 0.3s ease',
               cursor: 'pointer',
-              border: '1px solid rgba(59, 114, 26, 0.2)'
+              border: '1px solid rgba(59, 114, 26, 0.2)',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-3px)';
-              e.currentTarget.style.boxShadow = '0 8px 25px rgba(59, 114, 26, 0.2)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.12)';
+              e.currentTarget.style.background = 'rgba(59, 114, 26, 0.05)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)';
+              e.currentTarget.style.background = 'rgba(59, 114, 26, 0.02)';
             }}
             onClick={() => navigate('/expenses')}
           >
@@ -219,9 +229,9 @@ const Dashboard = () => {
                 style={{
                   width: 60,
                   height: 60,
-                  background: 'rgba(59, 114, 26, 0.15)',
+                  background: 'rgba(59, 114, 26, 0.08)',
                   borderRadius: '50%',
-                  backdropFilter: 'blur(10px)'
+                  border: '1px solid rgba(59, 114, 26, 0.2)'
                 }}
               >
                 <CIcon icon={cilMoney} size="xl" style={{ color: '#3B721A' }} />
@@ -241,20 +251,23 @@ const Dashboard = () => {
           <CCard 
             className="h-100 border-0 shadow-sm"
             style={{ 
-              background: 'linear-gradient(135deg, #e8f5e8 0%, #d4f0d4 25%, #c0ebc0 50%, #a7e06b 75%, #8fd46b 100%)',
+              background: 'rgba(59, 114, 26, 0.02)',
               borderRadius: 16,
               overflow: 'hidden',
               transition: 'all 0.3s ease',
               cursor: 'pointer',
-              border: '1px solid rgba(59, 114, 26, 0.2)'
+              border: '1px solid rgba(59, 114, 26, 0.2)',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-3px)';
-              e.currentTarget.style.boxShadow = '0 8px 25px rgba(59, 114, 26, 0.2)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.12)';
+              e.currentTarget.style.background = 'rgba(59, 114, 26, 0.05)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)';
+              e.currentTarget.style.background = 'rgba(59, 114, 26, 0.02)';
             }}
             onClick={() => navigate('/customers')}
           >
@@ -264,9 +277,9 @@ const Dashboard = () => {
                 style={{
                   width: 60,
                   height: 60,
-                  background: 'rgba(59, 114, 26, 0.15)',
+                  background: 'rgba(59, 114, 26, 0.08)',
                   borderRadius: '50%',
-                  backdropFilter: 'blur(10px)'
+                  border: '1px solid rgba(59, 114, 26, 0.2)'
                 }}
               >
                 <CIcon icon={cilUser} size="xl" style={{ color: '#3B721A' }} />
@@ -283,20 +296,23 @@ const Dashboard = () => {
           <CCard 
             className="h-100 border-0 shadow-sm"
             style={{ 
-              background: 'linear-gradient(135deg, #fff8e6 0%, #fff0cc 25%, #ffe8b3 50%, #fdd940 75%, #f5d030 100%)',
+              background: 'rgba(253, 217, 64, 0.02)',
               borderRadius: 16,
               overflow: 'hidden',
               transition: 'all 0.3s ease',
               cursor: 'pointer',
-              border: '1px solid rgba(253, 217, 64, 0.3)'
+              border: '1px solid rgba(253, 217, 64, 0.3)',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-3px)';
-              e.currentTarget.style.boxShadow = '0 8px 25px rgba(253, 217, 64, 0.3)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.12)';
+              e.currentTarget.style.background = 'rgba(253, 217, 64, 0.05)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)';
+              e.currentTarget.style.background = 'rgba(253, 217, 64, 0.02)';
             }}
             onClick={() => navigate('/products')}
           >
@@ -306,9 +322,9 @@ const Dashboard = () => {
                 style={{
                   width: 60,
                   height: 60,
-                  background: 'rgba(253, 217, 64, 0.2)',
+                  background: 'rgba(253, 217, 64, 0.08)',
                   borderRadius: '50%',
-                  backdropFilter: 'blur(10px)'
+                  border: '1px solid rgba(253, 217, 64, 0.3)'
                 }}
               >
                 <CIcon icon={cilList} size="xl" style={{ color: '#8B6914' }} />
@@ -325,20 +341,23 @@ const Dashboard = () => {
           <CCard 
             className="h-100 border-0 shadow-sm"
             style={{ 
-              background: 'linear-gradient(135deg, #e8f5e8 0%, #d4f0d4 25%, #c0ebc0 50%, #a7e06b 75%, #8fd46b 100%)',
+              background: 'rgba(59, 114, 26, 0.02)',
               borderRadius: 16,
               overflow: 'hidden',
               transition: 'all 0.3s ease',
               cursor: 'pointer',
-              border: '1px solid rgba(59, 114, 26, 0.2)'
+              border: '1px solid rgba(59, 114, 26, 0.2)',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-3px)';
-              e.currentTarget.style.boxShadow = '0 8px 25px rgba(59, 114, 26, 0.2)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.12)';
+              e.currentTarget.style.background = 'rgba(59, 114, 26, 0.05)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)';
+              e.currentTarget.style.background = 'rgba(59, 114, 26, 0.02)';
             }}
             onClick={() => navigate('/products?filter=low-stock')}
           >
@@ -348,9 +367,9 @@ const Dashboard = () => {
                 style={{
                   width: 60,
                   height: 60,
-                  background: 'rgba(59, 114, 26, 0.15)',
+                  background: 'rgba(59, 114, 26, 0.08)',
                   borderRadius: '50%',
-                  backdropFilter: 'blur(10px)'
+                  border: '1px solid rgba(59, 114, 26, 0.2)'
                 }}
               >
                 <CIcon icon={cilWarning} size="xl" style={{ color: '#3B721A' }} />
@@ -370,35 +389,39 @@ const Dashboard = () => {
           <CCard 
             className="h-100 border-0 shadow-sm"
             style={{ 
-              background: 'linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%)',
+              background: '#FFFFFF',
               borderRadius: 16,
               overflow: 'hidden',
-              transition: 'all 0.3s ease'
+              transition: 'all 0.3s ease',
+              border: '1px solid rgba(0, 0, 0, 0.1)',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-3px)';
-              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.12)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)';
             }}
           >
             <CCardHeader 
-              className="border-bottom-0 fw-bold text-white" 
+              className="border-bottom-0 fw-bold" 
               style={{ 
-                background: 'linear-gradient(135deg, #3B721A 0%, #4a8a2a 100%)',
+                background: 'rgba(59, 114, 26, 0.05)',
                 borderRadius: '16px 16px 0 0', 
-                padding: '16px 20px' 
+                padding: '16px 20px',
+                color: '#3B721A',
+                borderBottom: '1px solid rgba(59, 114, 26, 0.2)'
               }}
             >
-              <CIcon icon={cilList} className="me-2" />Top Selling Products
+              <CIcon icon={cilList} className="me-2" style={{ color: '#3B721A' }} />Top Selling Products
             </CCardHeader>
             <CCardBody style={{ padding: '20px' }}>
               {summary.top_selling_products && summary.top_selling_products.length > 0 ? (
                 <div>
                   {summary.top_selling_products.map((product, index) => (
-                    <div key={index} className="d-flex justify-content-between align-items-center mb-3 p-3 rounded-3" style={{ background: 'rgba(59, 114, 26, 0.05)' }}>
+                    <div key={index} className="d-flex justify-content-between align-items-center mb-3 p-3 rounded-3" style={{ background: 'rgba(59, 114, 26, 0.08)', border: '1px solid rgba(59, 114, 26, 0.2)' }}>
                       <div>
                         <span className="fw-bold me-2" style={{ color: '#3B721A' }}>#{index + 1}</span>
                         <span className="fw-medium">{product.name}</span>
@@ -432,35 +455,39 @@ const Dashboard = () => {
           <CCard 
             className="h-100 border-0 shadow-sm"
             style={{ 
-              background: 'linear-gradient(135deg, #ffffff 0%, #fff8f9 100%)',
+              background: '#FFFFFF',
               borderRadius: 16,
               overflow: 'hidden',
-              transition: 'all 0.3s ease'
+              transition: 'all 0.3s ease',
+              border: '1px solid rgba(0, 0, 0, 0.1)',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-3px)';
-              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.12)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)';
             }}
           >
             <CCardHeader 
-              className="border-bottom-0 fw-bold text-white" 
+              className="border-bottom-0 fw-bold" 
               style={{ 
-                background: 'linear-gradient(135deg, #3B721A 0%, #4a8a2a 100%)',
+                background: 'rgba(59, 114, 26, 0.05)',
                 borderRadius: '16px 16px 0 0', 
-                padding: '16px 20px' 
+                padding: '16px 20px',
+                color: '#3B721A',
+                borderBottom: '1px solid rgba(59, 114, 26, 0.2)'
               }}
             >
-              <CIcon icon={cilUser} className="me-2" />Best Customers
+              <CIcon icon={cilUser} className="me-2" style={{ color: '#3B721A' }} />Best Customers
             </CCardHeader>
             <CCardBody style={{ padding: '20px' }}>
               {summary.best_customers && summary.best_customers.length > 0 ? (
                 <div>
                   {summary.best_customers.map((customer, index) => (
-                    <div key={index} className="d-flex justify-content-between align-items-center mb-3 p-3 rounded-3" style={{ background: 'rgba(59, 114, 26, 0.05)' }}>
+                    <div key={index} className="d-flex justify-content-between align-items-center mb-3 p-3 rounded-3" style={{ background: 'rgba(59, 114, 26, 0.08)', border: '1px solid rgba(59, 114, 26, 0.2)' }}>
                       <div>
                         <span className="fw-bold me-2" style={{ color: '#3B721A' }}>#{index + 1}</span>
                         <span className="fw-medium">{customer.name}</span>
@@ -509,20 +536,22 @@ const Dashboard = () => {
             }}
           >
             <CCardHeader 
-              className="border-bottom-0 fw-bold text-white" 
+              className="border-bottom-0 fw-bold" 
               style={{ 
-                background: 'linear-gradient(135deg, #3B721A 0%, #4a8a2a 100%)',
+                background: 'rgba(59, 114, 26, 0.05)',
                 borderRadius: '16px 16px 0 0', 
-                padding: '16px 20px' 
+                padding: '16px 20px',
+                color: '#3B721A',
+                borderBottom: '1px solid rgba(59, 114, 26, 0.2)'
               }}
             >
-              <CIcon icon={cilTruck} className="me-2" />Best Suppliers
+              <CIcon icon={cilTruck} className="me-2" style={{ color: '#3B721A' }} />Best Suppliers
             </CCardHeader>
             <CCardBody style={{ padding: '20px' }}>
               {summary.best_suppliers && summary.best_suppliers.length > 0 ? (
                 <div>
                   {summary.best_suppliers.map((supplier, index) => (
-                    <div key={index} className="d-flex justify-content-between align-items-center mb-3 p-3 rounded-3" style={{ background: 'rgba(59, 114, 26, 0.05)' }}>
+                    <div key={index} className="d-flex justify-content-between align-items-center mb-3 p-3 rounded-3" style={{ background: 'rgba(59, 114, 26, 0.08)', border: '1px solid rgba(59, 114, 26, 0.2)' }}>
                       <div>
                         <span className="fw-bold me-2" style={{ color: '#3B721A' }}>#{index + 1}</span>
                         <span className="fw-medium">{supplier.name}</span>
@@ -559,36 +588,39 @@ const Dashboard = () => {
           <CCard 
             className="h-100 border-0 shadow-sm"
             style={{ 
-              background: 'linear-gradient(135deg, #ffffff 0%, #fffbf0 100%)',
+              background: '#FFFFFF',
               borderRadius: 16,
               overflow: 'hidden',
-              transition: 'all 0.3s ease'
+              transition: 'all 0.3s ease',
+              border: '1px solid rgba(0, 0, 0, 0.1)',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-3px)';
-              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.12)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)';
             }}
           >
             <CCardHeader 
-              className="border-bottom-0 fw-bold text-white" 
+              className="border-bottom-0 fw-bold" 
               style={{ 
-                background: 'linear-gradient(135deg, #FDD940 0%, #f5d030 100%)',
+                background: 'rgba(253, 217, 64, 0.05)',
                 borderRadius: '16px 16px 0 0', 
                 padding: '16px 20px',
-                color: '#3B721A'
+                color: '#8B6914',
+                borderBottom: '1px solid rgba(253, 217, 64, 0.3)'
               }}
             >
-              <CIcon icon={cilTruck} className="me-2" />Pending Purchase Orders
+              <CIcon icon={cilTruck} className="me-2" style={{ color: '#8B6914' }} />Pending Purchase Orders
             </CCardHeader>
             <CCardBody style={{ padding: '20px' }}>
               {summary.pending_purchase_orders && summary.pending_purchase_orders.length > 0 ? (
                 <div>
                   {summary.pending_purchase_orders.map((po, index) => (
-                    <div key={po.id} className="d-flex justify-content-between align-items-center mb-3 p-3 rounded-3" style={{ background: 'rgba(253, 217, 64, 0.1)' }}>
+                    <div key={po.id} className="d-flex justify-content-between align-items-center mb-3 p-3 rounded-3" style={{ background: 'rgba(253, 217, 64, 0.08)', border: '1px solid rgba(253, 217, 64, 0.2)' }}>
                       <div>
                         <div className="fw-bold" style={{ color: '#8B6914' }}>{po.po_number}</div>
                         <small className="text-muted">{po.created_at ? new Date(po.created_at).toLocaleDateString() : ''}</small>
@@ -625,22 +657,23 @@ const Dashboard = () => {
         </CCol>
         <CCol md={8} sm={12} className="mb-3">
           <CCard color="light" textColor="dark" style={{ 
-            background: 'linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%)', 
-            border: '1px solid #e9ecef', 
+            background: '#FFFFFF', 
+            border: '1px solid rgba(0, 0, 0, 0.1)', 
             borderRadius: 20, 
-            boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
             overflow: 'hidden'
           }}>
             <CCardHeader className="border-bottom-0 fw-bold fs-4" style={{ 
-              background: 'linear-gradient(135deg, #3B721A 0%, #4a8a2a 100%)',
-              color: 'white',
+              background: 'rgba(59, 114, 26, 0.05)',
+              color: '#3B721A',
               borderRadius: '20px 20px 0 0', 
               padding: '20px 28px',
-              textAlign: 'center'
+              textAlign: 'center',
+              borderBottom: '1px solid rgba(59, 114, 26, 0.2)'
             }}>
-              <CIcon icon={cilChartPie} className="me-2" size="lg" />
+              <CIcon icon={cilChartPie} className="me-2" size="lg" style={{ color: '#3B721A' }} />
               Quick Access Reports
-              <div className="mt-2" style={{ fontSize: '0.9em', opacity: 0.9 }}>
+              <div className="mt-2" style={{ fontSize: '0.9em', opacity: 0.8, color: '#3B721A' }}>
                 Comprehensive business insights at your fingertips
               </div>
             </CCardHeader>
@@ -792,14 +825,16 @@ const Dashboard = () => {
             }}
           >
             <CCardHeader 
-              className="border-bottom-0 fw-bold text-white" 
+              className="border-bottom-0 fw-bold" 
               style={{ 
-                background: 'linear-gradient(135deg, #3B721A 0%, #4a8a2a 100%)',
+                background: 'rgba(59, 114, 26, 0.05)',
                 borderRadius: '16px 16px 0 0', 
-                padding: '16px 20px' 
+                padding: '16px 20px',
+                color: '#3B721A',
+                borderBottom: '1px solid rgba(59, 114, 26, 0.2)'
               }}
             >
-              <CIcon icon={cilMoney} className="me-2" />Expense Breakdown
+              <CIcon icon={cilMoney} className="me-2" style={{ color: '#3B721A' }} />Expense Breakdown
             </CCardHeader>
             <CCardBody style={{ padding: '20px' }}>
               <div style={{ position: 'relative', width: '100%', height: 280 }}>
